@@ -1,9 +1,9 @@
 import React from 'react';
 import {View} from 'react-native';
-// import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
+import {GoogleSigninButton} from '@react-native-google-signin/google-signin';
 import {ActivityIndicator, Button} from 'react-native-paper';
 
-// import {AuthMethod} from '~/types/user';
+import {AuthMethod} from '~/types/user';
 
 import {SigninViewProps} from './signinTypes';
 
@@ -25,12 +25,11 @@ const SigninView = ({
             </>
           ) : (
             <>
-              Google Button
-              {/* <GoogleSigninButton
+              <GoogleSigninButton
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Dark}
                 onPress={() => handleSignin(AuthMethod.GOOGLE)}
-              /> */}
+              />
             </>
           )}
         </>

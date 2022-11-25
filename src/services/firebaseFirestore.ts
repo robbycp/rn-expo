@@ -1,54 +1,6 @@
-// import firestore from '@react-native-firebase/firestore';
-// import type {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
-// class firestore {
-//   constructor() {
-//     return Promise.resolve(this)
-//   }
-// }
-namespace FirebaseFirestoreTypes {
-  export type DocumentSnapshot = {
-    data: () => void
-  }
-  export type DocumentData = {
-    id: string
-  }
-}
-const firestore = () => {
-  class FirestoreInstance {
-    constructor() {
-      return this
-    }
-    data = () => {}
-    collection(collectionName: string) {
-      console.log('collectionName', collectionName)
-      return this
-    }
-    doc(docId: string) {
-      console.log('docId', docId)
-      return this
-    }
-    get() {
-      return this
-    }
-    add(newData: unknown) {
-      console.log('newData', newData)
-      return this
-    }
-    set(setData: unknown, options: unknown) {
-      console.log('setData', setData)
-      console.log('options', options)
-      return this
-    }
-    update(updateData: unknown) {
-      console.log('updateData', updateData)
-      return this
-    }
-    delete() {
-      return this
-    }
-  }
-  return new FirestoreInstance()
-}
+import firestore from '@react-native-firebase/firestore';
+import type {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
+
 export interface FirestoreData<T>
   extends Omit<FirebaseFirestoreTypes.DocumentSnapshot, 'data'> {
   data: () => T | undefined;

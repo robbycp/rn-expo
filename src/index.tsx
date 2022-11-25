@@ -13,6 +13,7 @@ import {StatusBar, useColorScheme} from 'react-native';
 import {useReduxDevToolsExtension} from '@react-navigation/devtools';
 import {QueryClient, QueryClientProvider} from 'react-query';
 
+import {initOneSignal} from '~/services/notificationOneSignal'
 import {CustomErrorBoundary} from '~/utils/errorHandler';
 import RootNavigator from '~/navigation/RootNavigator';
 import {navigationRef} from '~/navigation/navigator';
@@ -28,6 +29,8 @@ import linking from '~/navigation/linking';
 import '~/translations';
 
 const {persistor, store} = configureStore();
+
+initOneSignal();
 
 setInAppMessaging(true);
 

@@ -1,22 +1,6 @@
-import * as Constants from 'expo-constants';
-// import remoteConfig from '@react-native-firebase/remote-config';
-const remoteConfig = () => ({
-  setDefaults: (defaultVal: unknown) => {
-    return Promise.resolve(defaultVal)
-  },
-  fetch: (defaultVal: unknown) => {
-    return Promise.resolve(defaultVal)
-  },
-  activate: () => {
-    return Promise.resolve(false)
-  },
-  getValue: (key: string) => ({
-    getSource: () => 'source',
-    asString: () => key,
-    asNumber: () => 1,
-    asBoolean: () => true,
-  })
-})
+import Constants from 'expo-constants';
+import remoteConfig from '@react-native-firebase/remote-config';
+
 export enum RemoteConfigKeys {
   AWESOME_NEW_FEATURE = 'awesome_new_feature',
   UPDATE_APP_TYPE = 'update_app_type',

@@ -1,7 +1,4 @@
-// import inAppMessaging from '@react-native-firebase/in-app-messaging';
-const inAppMessaging = () => ({
-  setMessagesDisplaySuppressed: (isSet: boolean) => Promise.resolve(isSet)
-})
+import inAppMessaging from '@react-native-firebase/in-app-messaging';
 
 export async function setInAppMessaging(isSet: boolean) {
   await inAppMessaging().setMessagesDisplaySuppressed(isSet);

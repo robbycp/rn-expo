@@ -1,24 +1,7 @@
-import * as Constants from 'expo-constants';
-// import auth from '@react-native-firebase/auth';
-// import {GoogleSignin} from '@react-native-google-signin/google-signin';
-// import type {FirebaseAuthTypes} from '@react-native-firebase/auth';
-
-namespace FirebaseAuthTypes {
-  export type User = {}
-  export type UserCredential = {}
-}
-const GoogleSignin = {
-  configure: (options: unknown) => options,
-  signIn: () => ({idToken: 'idToken'}),
-}
-const auth = () => ({
-  currentUser: {},
-  signInWithCredential: (credential: unknown) => ({} as FirebaseAuthTypes.UserCredential),
-  signOut: () => Promise.resolve({}),
-})
-auth['GoogleAuthProvider'] = {
-  credential: (idToken: string) => idToken
-},
+import Constants from 'expo-constants';
+import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import type {FirebaseAuthTypes} from '@react-native-firebase/auth';
 
 GoogleSignin.configure({
   webClientId: Constants.expoConfig?.extra?.GOOGLE_CLIENT_ID,

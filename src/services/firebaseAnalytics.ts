@@ -1,11 +1,5 @@
-// import analytics from '@react-native-firebase/analytics';
+import analytics, { firebase } from '@react-native-firebase/analytics';
 import * as Transparency from 'expo-tracking-transparency';
-
-const analytics = () => ({
-  setAnalyticsCollectionEnabled: (isEnabled: boolean) => Promise.resolve(isEnabled),
-  logEvent: (log: unknown, options: unknown) => Promise.resolve(({log, options})),
-  logScreenView: (log: unknown) => Promise.resolve(log),
-})
 
 /**
  * Functionality
@@ -14,15 +8,22 @@ export async function initialAnalytics() {
   try {
     const isAvailableTracking = Transparency.isAvailable()
     let trackingStatus = await Transparency.getTrackingPermissionsAsync();
+    console.log('trackingStatus', trackingStatus)
     if (trackingStatus.status === 'undetermined') {
       trackingStatus = await Transparency.requestTrackingPermissionsAsync();
     }
+    let isEnabled = false
     if (trackingStatus.status === 'granted' || !isAvailableTracking) {
       // enable tracking features
-      await analytics().setAnalyticsCollectionEnabled(true);
+      await firebase.analytics().setAnalyticsCollectionEnabled(true);
+      isEnabled = true
     } else {
-      await analytics().setAnalyticsCollectionEnabled(false);
+      isEnabled = false
+      await firebase.analytics().setAnalyticsCollectionEnabled(false);
     }
+    const appInstanceId = await analytics().getAppInstanceId();
+    console.log('appInstanceId', appInstanceId)
+    console.log('isEnabled', isEnabled)
   } catch (error) {
     console.info('[firebase-analytics] initial error', error);
   }
