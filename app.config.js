@@ -55,6 +55,18 @@ const defaultConfig = {
     "@react-native-firebase/auth",
     "@react-native-google-signin/google-signin",
   ],
+  hooks: {
+    postPublish: [
+      {
+        file: "sentry-expo/upload-sourcemaps",
+        config: {
+          organization: process.env.SENTRY_ORG,
+          project: process.env.SENTRY_PROJECT,
+          authToken: process.env.SENTRY_AUTH_TOKEN,
+        }
+      }
+    ]
+  },
   extra: {
     eas: {
       projectId: process.env.EAS_PROJECT_ID,
@@ -74,6 +86,7 @@ const defaultConfig = {
     // # Firebase
     FIREBASE_REMOTE_CONFIG_CACHE_TIME: process.env.FIREBASE_REMOTE_CONFIG_CACHE_TIME,
     // # Sentry
+    SENTRY_DSN: process.env.SENTRY_DSN,
     SENTRY_ORG: process.env.SENTRY_ORG,
     SENTRY_PROJECT: process.env.SENTRY_PROJECT,
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,

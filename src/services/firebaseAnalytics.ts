@@ -8,7 +8,6 @@ export async function initialAnalytics() {
   try {
     const isAvailableTracking = Transparency.isAvailable()
     let trackingStatus = await Transparency.getTrackingPermissionsAsync();
-    console.log('trackingStatus', trackingStatus)
     if (trackingStatus.status === 'undetermined') {
       trackingStatus = await Transparency.requestTrackingPermissionsAsync();
     }
@@ -21,9 +20,6 @@ export async function initialAnalytics() {
       isEnabled = false
       await firebase.analytics().setAnalyticsCollectionEnabled(false);
     }
-    const appInstanceId = await analytics().getAppInstanceId();
-    console.log('appInstanceId', appInstanceId)
-    console.log('isEnabled', isEnabled)
   } catch (error) {
     console.info('[firebase-analytics] initial error', error);
   }

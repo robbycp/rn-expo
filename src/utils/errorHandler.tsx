@@ -74,9 +74,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   container: {
+    padding: 8,
     flex: 1,
   },
   content: {
+    padding: 8,
     flex: 1,
   }
 })
@@ -88,9 +90,7 @@ export const CustomErrorBoundary = ({children}: {children: React.ReactNode}) => 
       await Update.reloadAsync()
     }
     return (
-      <SafeAreaView
-        style={styles.safeAreaView}
-      >
+      <SafeAreaView style={styles.safeAreaView}>
         <View style={styles.container}>
           <View style={styles.content}>
             <Text style={{ width: '100%', }}>
