@@ -3,14 +3,34 @@
     "version": ">= 2.7.1"
   },
   "build": {
-    "development": {
+    "dev": {
+      "channel": "dev",
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "ENVIRONMENT": "dev"
+      }
     },
-    "preview": {
-      "distribution": "internal"
+    "staging": {
+      "channel": "staging",
+      "distribution": "internal",
+      "env": {
+        "ENVIRONMENT": "dev"
+      }
     },
-    "production": {}
+    "pre-production": {
+      "channel": "pre-production",
+      "distribution": "internal",
+      "env": {
+        "ENVIRONMENT": "production"
+      }
+    },
+    "production": {
+      "channel": "production",
+      "env": {
+        "ENVIRONMENT": "production"
+      }
+    }
   },
   "submit": {
     "production": {}

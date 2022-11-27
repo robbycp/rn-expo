@@ -1,5 +1,5 @@
 import React from 'react';
-import * as Constants from 'expo-constants';
+import Constants from 'expo-constants';
 import {
   SafeAreaView,
   ScrollView,
@@ -32,6 +32,7 @@ import NetworkRead from './NetworkRead';
 import Signin from './Signin';
 import {ScreenHomeViewProps} from './ScreenHomeTypes';
 import SnackbarHome from './SnackbarHome';
+import VersionApp from '~/components/custom/VersionApp';
 
 const marginVideoPlayer = 16;
 
@@ -154,6 +155,7 @@ const ScreenHomeView = ({
             </View>
           ))}
         </View>
+        <VersionApp />
       </ScrollView>
     </SafeAreaView>
   );

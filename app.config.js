@@ -1,21 +1,22 @@
 require('dotenv').config()
 
-const isDev = process.env.ENVIRONMENT === 'dev'
+const isDev = process.env.ENVIRONMENT !== 'production'
+const appName = 'RN Expo'
 
 const defaultConfig = {
-  name: "rn-expo-template",
   slug: "rn-expo-template",
-  version: "1.0.0",
+  version: "0.1.0",
   orientation: "portrait",
-  icon: "./assets/images/icon.png",
-  scheme: "myapp",
+  icon: "./src/assets/images/logo.png",
+  scheme: "rnexpotemplate",
   userInterfaceStyle: "automatic",
   splash: {
-    image: "./assets/images/splash.png",
+    image: "./src/assets/images/logo.png",
     resizeMode: "contain",
     backgroundColor: "#ffffff"
   },
   updates: {
+    url: process.env.EAS_UPDATE_URL,
     fallbackToCacheTimeout: 0
   },
   assetBundlePatterns: [
@@ -28,12 +29,12 @@ const defaultConfig = {
   android: {
     googleServicesFile: './google-services.json',
     adaptiveIcon: {
-      foregroundImage: "./assets/images/adaptive-icon.png",
+      foregroundImage: "./src/assets/images/logo.png",
       backgroundColor: "#ffffff"
     }
   },
   web: {
-    favicon: "./assets/images/favicon.png"
+    favicon: "./src/assets/images/logo.png"
   },
   plugins: [
     "sentry-expo",
@@ -74,15 +75,11 @@ const defaultConfig = {
     // # Configuration
     API_URL: process.env.API_URL,
     ENVIRONMENT: process.env.ENVIRONMENT,
-    WITH_APP_VERSION_CHECK: process.env.WITH_APP_VERSION_CHECK,
 
     // # Storybook
     LOAD_STORYBOOK: process.env.LOAD_STORYBOOK,
 
     // ## Third Party Apps
-    // # Admob
-    ADMOB_ID_ANDROID: process.env.ADMOB_ID_ANDROID,
-    ADMOB_ID_IOS: process.env.ADMOB_ID_IOS,
     // # Firebase
     FIREBASE_REMOTE_CONFIG_CACHE_TIME: process.env.FIREBASE_REMOTE_CONFIG_CACHE_TIME,
     // # Sentry
@@ -93,6 +90,7 @@ const defaultConfig = {
   }
 }
 const devConfig = {
+  name: `${appName} (DEV)`,
   ios: {
     bundleIdentifier: process.env.IOS_BUNDLE_IDENTIFIER_DEV,
   },
@@ -115,6 +113,7 @@ const devConfig = {
   },
 }
 const prodConfig = {
+  name: appName,
   ios: {
     bundleIdentifier: process.env.IOS_BUNDLE_IDENTIFIER,
   },

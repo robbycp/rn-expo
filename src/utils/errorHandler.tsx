@@ -10,7 +10,7 @@ import {
 } from 'react-native'
 import {FontAwesome} from '@expo/vector-icons'
 import { Button } from 'react-native-paper';
-import Update from 'expo-updates';
+import * as Updates from 'expo-updates';
 import * as Sentry from 'sentry-expo';
 import Constants from 'expo-constants';
 
@@ -47,7 +47,7 @@ const restartActions = [
   {
     text: 'Restart',
     onPress: async () => {
-      await Update.reloadAsync();
+      await Updates.reloadAsync();
     },
   },
 ];
@@ -87,7 +87,7 @@ export const CustomErrorBoundary = ({children}: {children: React.ReactNode}) => 
   <Sentry.Native.ErrorBoundary fallback={({ error }) => {
     const handleBackToSignIn = async () => {
       await removeAsyncStorage(persistConfig.key);
-      await Update.reloadAsync()
+      await Updates.reloadAsync()
     }
     return (
       <SafeAreaView style={styles.safeAreaView}>
@@ -110,7 +110,7 @@ export const CustomErrorBoundary = ({children}: {children: React.ReactNode}) => 
               style={{ 
                 marginVertical: 15, 
               }}
-            >Back to Sign In Screen</Button>
+            >Restart</Button>
           </View>
         </View>
       </SafeAreaView>
