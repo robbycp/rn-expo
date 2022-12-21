@@ -1,7 +1,6 @@
 import React from 'react';
 import * as Sentry from 'sentry-expo';
 import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider as StoreProvider, useDispatch, useSelector} from 'react-redux';
 import {
   Provider as PaperProvider,
@@ -55,40 +54,39 @@ const AppSnackbar = () => {
     backgroundColor = theme.colors.custom.green400;
   }
   return (
-    <SafeAreaProvider>
-      <NavigationContainer
-        linking={linking}
-        theme={scheme === 'dark' ? RNDarkTheme : RNLightTheme}
-        ref={navigationRef}
-        onReady={() => {
-          routeNameRef.current = navigationRef.getCurrentRoute()?.name;
-          routingInstrumentation.registerNavigationContainer(navigationRef);
-          dispatch(appNavigationReady());
-        }}
-        onStateChange={() => {
-          const previousRouteName = routeNameRef.current;
-          const currentRouteName = navigationRef.getCurrentRoute()?.name;
+    <NavigationContainer
+      linking={linking}
+      theme={scheme === 'dark' ? RNDarkTheme : RNLightTheme}
+      ref={navigationRef}
+      onReady={() => {
+        routeNameRef.current = navigationRef.getCurrentRoute()?.name;
+        routingInstrumentation.registerNavigationContainer(navigationRef);
+        dispatch(appNavigationReady());
+      }}
+      onStateChange={() => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.getCurrentRoute()?.name;
 
-          if (previousRouteName !== currentRouteName) {
-            logScreen(currentRouteName);
-          }
-          routeNameRef.current = currentRouteName;
+        if (previousRouteName !== currentRouteName) {
+          logScreen(currentRouteName);
+        }
+        routeNameRef.current = currentRouteName;
+      }}
+    >
+      <StatusBar barStyle="dark-content" />
+      <RootNavigator />
+      <Snackbar
+        visible={snackbar.isVisible}
+        onDismiss={onDismissSnackBar}
+        duration={snackbar.duration}
+        style={backgroundColor ? {backgroundColor} : {}}
+        action={{
+          label: snackbar.textButton,
+          onPress: onDismissSnackBar,
         }}>
-        <StatusBar barStyle="dark-content" />
-        <RootNavigator />
-        <Snackbar
-          visible={snackbar.isVisible}
-          onDismiss={onDismissSnackBar}
-          duration={snackbar.duration}
-          style={backgroundColor ? {backgroundColor} : {}}
-          action={{
-            label: snackbar.textButton,
-            onPress: onDismissSnackBar,
-          }}>
-          {snackbar.message}
-        </Snackbar>
-      </NavigationContainer>
-    </SafeAreaProvider>
+        {snackbar.message}
+      </Snackbar>
+    </NavigationContainer>
   );
 };
 

@@ -68,8 +68,7 @@ const ScreenHomeView = ({
 
   const theme = useTheme();
 
-  const usingHermes =
-    typeof global.HermesInternal === 'object' && global.HermesInternal !== null;
+  const usingHermes = !!global.HermesInternal;
 
   return (
     <SafeAreaView>

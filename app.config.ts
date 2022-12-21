@@ -1,9 +1,19 @@
-require('dotenv').config()
+import dotenv from 'dotenv'
+import {ExpoConfig} from '@expo/config-types'
 
-const isDev = process.env.ENVIRONMENT !== 'production'
+dotenv.config()
+
+enum Environment {
+  dev = 'dev',
+  staging = 'staging',
+  preProduction = 'pre-production',
+  production = 'production',
+}
+
+const environment = process.env.ENVIRONMENT as Environment || 'dev'
 const appName = 'RN Expo'
 
-const defaultConfig = {
+const defaultConfig: Omit<ExpoConfig, 'name'> = {
   slug: "rn-expo-template",
   version: "0.1.0",
   orientation: "portrait",
@@ -36,7 +46,19 @@ const defaultConfig = {
   web: {
     favicon: "./src/assets/images/logo.png"
   },
+  jsEngine: 'hermes',
   plugins: [
+    [
+      "expo-build-properties",
+      {
+        "android": {
+          enableProguardInReleaseBuilds: true
+        },
+        "ios": {
+          "useFrameworks": "static"
+        }
+      }
+    ],
     "sentry-expo",
     [
       "expo-tracking-transparency",
@@ -89,7 +111,7 @@ const defaultConfig = {
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
   }
 }
-const devConfig = {
+const devConfig: ExpoConfig = {
   name: `${appName} (DEV)`,
   ios: {
     bundleIdentifier: process.env.IOS_BUNDLE_IDENTIFIER_DEV,
@@ -112,7 +134,11 @@ const devConfig = {
     GOOGLE_REVERSED_CLIENT_ID: process.env.GOOGLE_REVERSED_CLIENT_ID_DEV,
   },
 }
-const prodConfig = {
+const stagingConfig: ExpoConfig = {
+  ...devConfig,
+  name: `${appName} Staging`,
+}
+const prodConfig: ExpoConfig = {
   name: appName,
   ios: {
     bundleIdentifier: process.env.IOS_BUNDLE_IDENTIFIER,
@@ -135,45 +161,37 @@ const prodConfig = {
     GOOGLE_REVERSED_CLIENT_ID: process.env.GOOGLE_REVERSED_CLIENT_ID,
   },
 }
+const preProdConfig: ExpoConfig = {
+  ...prodConfig,
+  name: `${appName} PreProd`
+}
 
-module.exports = isDev ? {
+const configs = {
+  dev: devConfig,
+  staging: stagingConfig,
+  'pre-production': preProdConfig,
+  production: prodConfig,
+}
+const selectedConfig = configs[environment]
+
+module.exports = {
   expo: {
     ...defaultConfig,
-    ...devConfig,
+    ...selectedConfig,
     ios: {
       ...defaultConfig.ios,
-      ...devConfig.ios,
+      ...selectedConfig.ios,
     },
     android: {
       ...defaultConfig.android,
-      ...devConfig.android,
+      ...selectedConfig.android,
     },
     client: [
-      ...devConfig.client,
+      ...selectedConfig.client,
     ],
     extra: {
       ...defaultConfig.extra,
-      ...devConfig.extra,
-    },
-  }
-} : {
-  expo: {
-    ...defaultConfig,
-    ...prodConfig,
-    ios: {
-      ...defaultConfig.ios,
-      ...prodConfig.ios,
-    },
-    android: {
-      ...defaultConfig.android,
-      ...prodConfig.android,
-    },
-    client: [
-      ...prodConfig.client,
-    ],
-    extra: {
-      ...defaultConfig.extra,
-      ...prodConfig.extra,
+      ...selectedConfig.extra,
     },
   }
 }

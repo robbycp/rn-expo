@@ -1,4 +1,3 @@
-import 'react-native-gesture-handler';
 import 'expo-dev-client';
 
 // import Constants from 'expo-constants';

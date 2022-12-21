@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
-
 import {useDispatch, useSelector} from 'react-redux';
-import {appStartCheck} from '~/store/slices/app';
 import {useTheme} from 'react-native-paper';
+
+import {appStartCheck} from '~/store/slices/app';
 
 const styles = StyleSheet.create({
   image: {

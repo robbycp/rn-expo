@@ -15,14 +15,14 @@
       "channel": "staging",
       "distribution": "internal",
       "env": {
-        "ENVIRONMENT": "dev"
+        "ENVIRONMENT": "staging"
       }
     },
     "pre-production": {
       "channel": "pre-production",
       "distribution": "internal",
       "env": {
-        "ENVIRONMENT": "production"
+        "ENVIRONMENT": "pre-production"
       }
     },
     "production": {
