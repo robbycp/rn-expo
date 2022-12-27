@@ -1,6 +1,6 @@
 import {
   configureFonts,
-  DarkTheme as PaperDarkTheme,
+  MD3DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
 } from 'react-native-paper';
 import {
@@ -32,8 +32,6 @@ export const RNLightTheme = {
     primary: lightColors.primary,
     background: lightColors.background,
     card: lightColors.surface,
-    text: lightColors.text,
-    notification: lightColors.notification,
   },
 };
 
@@ -44,8 +42,6 @@ export const RNDarkTheme = {
     primary: darkColors.primary,
     background: darkColors.background,
     card: darkColors.surface,
-    text: darkColors.text,
-    notification: darkColors.notification,
   },
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
-import {Appbar} from 'react-native-paper';
+import {StyleSheet, View} from 'react-native';
+import {Appbar, Text} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 
 interface HeaderProps {
