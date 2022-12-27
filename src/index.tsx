@@ -22,7 +22,7 @@ import {routingInstrumentation} from '~/utils/errorHandler';
 import {fetchRemoteConfig} from '~/services/firebaseRemoteConfig';
 import {initialAnalytics, logScreen} from '~/services/firebaseAnalytics';
 import {setInAppMessaging} from '~/services/firebaseInAppMessaging';
-import {appNavigationReady} from '~/store/slices/app';
+import {appNavigationReady, appStartCheck} from '~/store/slices/app';
 import {getSnackbarState, snackbarHide} from '~/store/slices/snackbar';
 import linking from '~/navigation/linking';
 import '~/translations';
@@ -62,6 +62,7 @@ const AppSnackbar = () => {
         routeNameRef.current = navigationRef.getCurrentRoute()?.name;
         routingInstrumentation.registerNavigationContainer(navigationRef);
         dispatch(appNavigationReady());
+        dispatch(appStartCheck());
       }}
       onStateChange={() => {
         const previousRouteName = routeNameRef.current;

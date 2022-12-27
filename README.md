@@ -28,6 +28,18 @@ node ./scripts/generate-base64-google-service.js
 node ./check-base64-google-service.js
 ```
 
+## Build
+
+1. [Follow](https://docs.expo.dev/build/setup/) this to install eas.
+2. Run this in terminal based on environment
+
+```
+npm run build:android:dev
+npm run build:android:staging
+npm run build:android:pre-production
+npm run build:android:production
+```
+
 ## Debugging
 
 ### Android

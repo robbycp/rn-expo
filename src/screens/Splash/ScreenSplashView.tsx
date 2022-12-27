@@ -1,9 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
 import {useTheme} from 'react-native-paper';
-
-import {appStartCheck} from '~/store/slices/app';
 
 const styles = StyleSheet.create({
   image: {
@@ -14,14 +11,7 @@ const styles = StyleSheet.create({
 });
 
 const ScreenSplashView = () => {
-  const dispatch = useDispatch();
   const theme = useTheme();
-  const isReady = useSelector(state => state.app.isNavigationReady);
-  React.useEffect(() => {
-    if (isReady) {
-      dispatch(appStartCheck());
-    }
-  }, [isReady, dispatch]);
 
   return (
     <View style={[theme.layout.center, theme.layout.fill]}>
