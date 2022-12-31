@@ -116,7 +116,7 @@ const ScreenHomeView = ({
             value={isShowFocus}
             onValueChange={() => setisShowFocus(!isShowFocus)}
           />
-          <Subheading>Bismillah OTA versi 6 jancuk</Subheading>
+          <Subheading>Bismillah OTA versi 2 wina cantik</Subheading>
           <Subheading>{i18n.t('home.performance')}</Subheading>
           <Subheading>{i18n.t('home.error')}</Subheading>
           <Button

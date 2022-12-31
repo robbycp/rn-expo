@@ -8,6 +8,8 @@
     "build:android:staging": "eas build --profile staging --platform android",
     "build:android:pre-production": "eas build --profile pre-production --platform android",
     "build:android:production": "eas build --profile production --platform android",
+    "update:staging": "eas update --branch staging --message $1",
+    "update:production": "eas update --branch production --message $1",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
