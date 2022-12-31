@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Modal from 'react-native-modal';
 import {Divider, IconButton, Title, useTheme} from 'react-native-paper';
+
 import {customColors} from '~/style/color';
 
 interface Props {

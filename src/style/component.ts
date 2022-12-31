@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 import {ComponentType} from './componentType';
 
 const sizes = [4, 8, 16, 20];

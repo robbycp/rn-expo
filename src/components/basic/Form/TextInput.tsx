@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Pressable,
-  View,
-  TextInput as RNTextInput,
-  GestureResponderEvent,
-} from 'react-native';
+import {Pressable, View, TextInput as RNTextInput, GestureResponderEvent} from 'react-native';
 import {HelperText, TextInput} from 'react-native-paper';
 
 const TEXTINPUT_MODE = 'outlined';
@@ -47,16 +42,9 @@ const TextInputCustom = ({
   };
   let right = null;
   if (textInputMode === 'secure') {
-    right = (
-      <TextInput.Icon
-        onPress={onPressSecure}
-        name={isSecure ? 'eye-off' : 'eye'}
-      />
-    );
+    right = <TextInput.Icon onPress={onPressSecure} name={isSecure ? 'eye-off' : 'eye'} />;
   } else if (textInputMode === 'clear') {
-    right = value !== '' && (
-      <TextInput.Icon onPress={onPressClear} name="window-close" />
-    );
+    right = value !== '' && <TextInput.Icon onPress={onPressClear} name="window-close" />;
   }
 
   const propsTextInput = {

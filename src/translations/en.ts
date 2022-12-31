@@ -11,8 +11,7 @@ const en = {
     },
     errorMessage: {
       fatal: {
-        message:
-          'We already receive the error message. Please restart our apps',
+        message: 'We already receive the error message. Please restart our apps',
         title: 'Something went wrong',
       },
     },

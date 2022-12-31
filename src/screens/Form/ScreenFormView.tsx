@@ -1,12 +1,12 @@
 import React from 'react';
 import {ScrollView} from 'react-native';
 import {Subheading, Title, useTheme} from 'react-native-paper';
-import DatetimePicker from '~/components/basic/Form/DatetimePicker';
-
-import PickerList from '~/components/basic/Form/PickerList';
-import TextInput from '~/components/basic/Form/TextInput';
 
 import {ScreenFormViewProps} from './screenFormTypes';
+
+import DatetimePicker from '~/components/basic/Form/DatetimePicker';
+import PickerList from '~/components/basic/Form/PickerList';
+import TextInput from '~/components/basic/Form/TextInput';
 
 const list = [
   {id: '1', title: 'java', description: 'java', value: 'java'},
@@ -106,17 +106,9 @@ const ScreenFormView = ({
       />
       <Title>Datetime picker</Title>
       <Subheading>Date</Subheading>
-      <DatetimePicker
-        mode="date"
-        onChange={val => setFormDate(val)}
-        value={formDate}
-      />
+      <DatetimePicker mode="date" onChange={val => setFormDate(val)} value={formDate} />
       <Subheading>Time</Subheading>
-      <DatetimePicker
-        mode="time"
-        onChange={val => setFormTime(val)}
-        value={formTime}
-      />
+      <DatetimePicker mode="time" onChange={val => setFormTime(val)} value={formTime} />
     </ScrollView>
   );
 };

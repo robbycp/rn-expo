@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+
 import {ReduxModule} from '~/types/redux';
 import {Auth, AuthMethod, ClientData} from '~/types/user';
 

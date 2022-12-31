@@ -1,7 +1,7 @@
+import LottieView from 'lottie-react-native';
 import React from 'react';
 import {View} from 'react-native';
 import {useTheme} from 'react-native-paper';
-import LottieView from 'lottie-react-native';
 
 interface Props {
   children: React.ReactElement;
@@ -16,11 +16,7 @@ const LoadingContent = ({isVisible, children}: Props) => {
   }
   return (
     <View style={[theme.layout.center, theme.layout.fullSize]}>
-      <LottieView
-        source={require('~/assets/animations/71696-dolphin.json')}
-        autoPlay
-        loop
-      />
+      <LottieView source={require('~/assets/animations/71696-dolphin.json')} autoPlay loop />
     </View>
   );
 };

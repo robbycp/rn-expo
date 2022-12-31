@@ -24,9 +24,7 @@ const Header = ({title}: HeaderProps) => {
     <Appbar.Header>
       <View style={styles.content}>
         <Divider style={[theme.spacing.mt4, styles.divider]} />
-        <Title style={[theme.layout.fill, theme.layout.textCenter]}>
-          {title}
-        </Title>
+        <Title style={[theme.layout.fill, theme.layout.textCenter]}>{title}</Title>
       </View>
     </Appbar.Header>
   );

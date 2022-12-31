@@ -1,18 +1,11 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
-import {
-  Button,
-  Card,
-  Paragraph,
-  Text,
-  Title,
-  useTheme,
-} from 'react-native-paper';
+import {Button, Card, Paragraph, Text, Title, useTheme} from 'react-native-paper';
 
-import LoadingContent from '~/components/basic/Loading/LoadingContent';
 import TextInputCustom from '~/components/basic/Form/TextInput';
-import {Todo} from '~/services/api/apiCrud';
+import LoadingContent from '~/components/basic/Loading/LoadingContent';
 import {useTodosGet} from '~/hooks/dataState/crud.hooks';
+import {Todo} from '~/services/api/apiCrud';
 
 interface Props {
   formTodo: Todo;
@@ -60,9 +53,7 @@ const TabCrudView = ({
                 <Paragraph>{item.description}</Paragraph>
               </Card.Content>
               <Card.Actions>
-                <Button
-                  color={theme.colors.error}
-                  onPress={() => handleDeleteTodo(item._id)}>
+                <Button color={theme.colors.error} onPress={() => handleDeleteTodo(item._id)}>
                   Delete
                 </Button>
                 <Button onPress={() => setFormTodo(item)}>Update</Button>

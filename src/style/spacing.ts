@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+
 import {Spacing} from './spacingType';
 
 const sizes = [0, 4, 8, 12, 16, 20, 24, 32, 40];

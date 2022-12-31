@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import type {CustomColor} from './style/color';
 import type {CustomStyle} from './style/theme';
 
 declare global {
-  type HermesInternal = null | {};
+  type HermesInternal = null | object;
   interface window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: Function;
   }

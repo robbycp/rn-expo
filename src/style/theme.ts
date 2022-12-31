@@ -1,15 +1,15 @@
 import {
+  DefaultTheme as RNDefaultTheme,
+  DarkTheme as RNDefaultDarkTheme,
+} from '@react-navigation/native';
+import {
   configureFonts,
   MD3DarkTheme as PaperDarkTheme,
   DefaultTheme as PaperDefaultTheme,
 } from 'react-native-paper';
-import {
-  DefaultTheme as RNDefaultTheme,
-  DarkTheme as RNDefaultDarkTheme,
-} from '@react-navigation/native';
 
-import component from './component';
 import {darkColors, lightColors} from './color';
+import component from './component';
 import fonts from './fonts';
 import layout from './layout';
 import metrics from './metrics';

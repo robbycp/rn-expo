@@ -1,10 +1,10 @@
 import {expectSaga} from 'redux-saga-test-plan';
 
+import * as sagasApp from '../app';
+
+import {ContextName} from '~/store/rootContext';
 import * as ducksApp from '~/store/slices/app';
 import * as ducksAuth from '~/store/slices/auth';
-import {ContextName} from '~/store/rootContext';
-
-import * as sagasApp from '../app';
 
 describe('Sagas: ', () => {
   describe('appStartCheckSaga', () => {

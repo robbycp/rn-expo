@@ -1,30 +1,25 @@
-import React from 'react';
-import * as Sentry from 'sentry-expo';
-import {NavigationContainer} from '@react-navigation/native';
-import {Provider as StoreProvider, useDispatch, useSelector} from 'react-redux';
-import {
-  Provider as PaperProvider,
-  Snackbar,
-  useTheme,
-} from 'react-native-paper';
-import {PersistGate} from 'redux-persist/integration/react';
-import {StatusBar, useColorScheme} from 'react-native';
 import {useReduxDevToolsExtension} from '@react-navigation/devtools';
+import {NavigationContainer} from '@react-navigation/native';
+import React from 'react';
+import {StatusBar, useColorScheme} from 'react-native';
+import {Provider as PaperProvider, Snackbar, useTheme} from 'react-native-paper';
 import {QueryClient, QueryClientProvider} from 'react-query';
+import {Provider as StoreProvider, useDispatch, useSelector} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import * as Sentry from 'sentry-expo';
 
-import {initOneSignal} from '~/services/notificationOneSignal'
-import {CustomErrorBoundary} from '~/utils/errorHandler';
 import RootNavigator from '~/navigation/RootNavigator';
+import linking from '~/navigation/linking';
 import {navigationRef} from '~/navigation/navigator';
-import configureStore from '~/store';
-import {RNDarkTheme, RNLightTheme, darkTheme, lightTheme} from '~/style/theme';
-import {routingInstrumentation} from '~/utils/errorHandler';
-import {fetchRemoteConfig} from '~/services/firebaseRemoteConfig';
 import {initialAnalytics, logScreen} from '~/services/firebaseAnalytics';
 import {setInAppMessaging} from '~/services/firebaseInAppMessaging';
+import {fetchRemoteConfig} from '~/services/firebaseRemoteConfig';
+import {initOneSignal} from '~/services/notificationOneSignal';
+import configureStore from '~/store';
 import {appNavigationReady, appStartCheck} from '~/store/slices/app';
 import {getSnackbarState, snackbarHide} from '~/store/slices/snackbar';
-import linking from '~/navigation/linking';
+import {RNDarkTheme, RNLightTheme, darkTheme, lightTheme} from '~/style/theme';
+import {routingInstrumentation, CustomErrorBoundary} from '~/utils/errorHandler';
 import '~/translations';
 
 const {persistor, store} = configureStore();
@@ -72,8 +67,7 @@ const AppSnackbar = () => {
           logScreen(currentRouteName);
         }
         routeNameRef.current = currentRouteName;
-      }}
-    >
+      }}>
       <StatusBar barStyle="dark-content" />
       <RootNavigator />
       <Snackbar

@@ -2,7 +2,7 @@ import React from 'react';
 import {FlatList, Image, StyleSheet, View} from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
 
-import i18n from '~/translations'
+import i18n from '~/translations';
 // Uncomment to use withPerformanceMonitor
 // import withPerformanceMonitor from 'react-native-performance-monitor/provider';
 
@@ -26,9 +26,7 @@ const ScreenFlatListImageView = () => {
           key={item}
           style={[styles.image]}
           source={{
-            uri: `https://source.unsplash.com/random/500x${Math.floor(
-              Math.random() * 800 + 500,
-            )}`,
+            uri: `https://source.unsplash.com/random/500x${Math.floor(Math.random() * 800 + 500)}`,
           }}
         />
       )}

@@ -1,10 +1,10 @@
 import React from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, View, ListRenderItem} from 'react-native';
 import {List, RadioButton} from 'react-native-paper';
 
-import BottomPanel from '~/components/basic/BottomPanel';
 import TextInput, {TextInputCustomProps} from './TextInput';
-import {ListRenderItem} from 'react-native';
+
+import BottomPanel from '~/components/basic/BottomPanel';
 
 interface PickerItem {
   id: string;
@@ -19,13 +19,7 @@ interface PickerListProps {
   propsTextInput?: TextInputCustomProps;
   value: PickerItem;
 }
-const PickerList = ({
-  label,
-  onChange,
-  propsTextInput,
-  value,
-  list,
-}: PickerListProps) => {
+const PickerList = ({label, onChange, propsTextInput, value, list}: PickerListProps) => {
   const [isShowBottom, setisShowBottom] = React.useState(false);
   const handleShowBottom = () => {
     setisShowBottom(true);
@@ -60,20 +54,13 @@ const PickerList = ({
   };
   return (
     <View>
-      <TextInput
-        onPress={handleShowBottom}
-        nativeTextInputProps={newPropsTextInput}
-      />
+      <TextInput onPress={handleShowBottom} nativeTextInputProps={newPropsTextInput} />
       <BottomPanel
         isVisible={isShowBottom}
         handleClose={handleHideBottom}
         height={'50%'}
         textHeader={label}>
-        <FlatList
-          data={list}
-          keyExtractor={item => item.id}
-          renderItem={renderItem}
-        />
+        <FlatList data={list} keyExtractor={item => item.id} renderItem={renderItem} />
       </BottomPanel>
     </View>
   );

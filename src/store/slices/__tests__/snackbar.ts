@@ -1,9 +1,9 @@
 import type {AnyAction} from '@reduxjs/toolkit';
 
-import i18n from '~/translations';
-
 import reducer, * as ducksSnackbar from '../snackbar';
 import type {SnackbarState} from '../snackbar';
+
+import i18n from '~/translations';
 
 const snackbarData = {
   action: {
@@ -31,9 +31,7 @@ describe('Reducers :', () => {
     const expectedState: SnackbarState = {
       ...ducksSnackbar.initialState,
     };
-    expect(reducer(previousState, ducksSnackbar.snackbarHide())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksSnackbar.snackbarHide())).toEqual(expectedState);
   });
   test('should handle show snackbar', () => {
     const previousState: SnackbarState = {
@@ -44,9 +42,7 @@ describe('Reducers :', () => {
       ...snackbarData,
       isVisible: true,
     };
-    expect(
-      reducer(previousState, ducksSnackbar.snackbarShow(snackbarData)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksSnackbar.snackbarShow(snackbarData))).toEqual(expectedState);
   });
   test('should handle show snackbar when payload only contains message', () => {
     const snackbarMessage = {
@@ -60,9 +56,9 @@ describe('Reducers :', () => {
       message: snackbarMessage.message,
       isVisible: true,
     };
-    expect(
-      reducer(previousState, ducksSnackbar.snackbarShow(snackbarMessage)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksSnackbar.snackbarShow(snackbarMessage))).toEqual(
+      expectedState,
+    );
   });
   test('should handle show snackbar when action.payload is empty', () => {
     const snackbarEmpty = {
@@ -83,8 +79,8 @@ describe('Reducers :', () => {
       },
       isVisible: true,
     };
-    expect(
-      reducer(previousState, ducksSnackbar.snackbarShow(snackbarEmpty)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksSnackbar.snackbarShow(snackbarEmpty))).toEqual(
+      expectedState,
+    );
   });
 });

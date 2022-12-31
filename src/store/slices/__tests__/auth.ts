@@ -2,6 +2,7 @@ import type {AnyAction} from '@reduxjs/toolkit';
 
 import reducer, * as ducksAuth from '../auth';
 import type {AuthState} from '../auth';
+
 import {AuthMethod} from '~/types/user';
 
 const errorAuth = {
@@ -40,9 +41,7 @@ describe('Reducers :', () => {
         isLoading: true,
       },
     };
-    expect(reducer(previousState, ducksAuth.authCheckRequest())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authCheckRequest())).toEqual(expectedState);
   });
   test('should handle start auth check failed', () => {
     const previousState: AuthState = {
@@ -60,9 +59,7 @@ describe('Reducers :', () => {
         error: errorAuth,
       },
     };
-    expect(
-      reducer(previousState, ducksAuth.authCheckFailed(errorAuth)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksAuth.authCheckFailed(errorAuth))).toEqual(expectedState);
   });
   test('should handle start auth check Success', () => {
     const previousState: AuthState = {
@@ -81,9 +78,7 @@ describe('Reducers :', () => {
         isLoading: false,
       },
     };
-    expect(reducer(previousState, ducksAuth.authCheckSuccess(true))).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authCheckSuccess(true))).toEqual(expectedState);
   });
 
   test('should handle start auth me fetch', () => {
@@ -106,9 +101,7 @@ describe('Reducers :', () => {
         isLoading: true,
       },
     };
-    expect(reducer(previousState, ducksAuth.authMe(userId))).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authMe(userId))).toEqual(expectedState);
   });
   test('should handle start auth me fetch failed', () => {
     const previousState: AuthState = {
@@ -126,9 +119,7 @@ describe('Reducers :', () => {
         error: errorAuth,
       },
     };
-    expect(reducer(previousState, ducksAuth.authMeFailed(errorAuth))).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authMeFailed(errorAuth))).toEqual(expectedState);
   });
   test('should handle start auth me fetch Success', () => {
     const previousState: AuthState = {
@@ -148,9 +139,7 @@ describe('Reducers :', () => {
         isLoading: false,
       },
     };
-    expect(
-      reducer(previousState, ducksAuth.authMeSuccess(authMeResponse)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksAuth.authMeSuccess(authMeResponse))).toEqual(expectedState);
   });
 
   test('should handle start auth signin', () => {
@@ -170,9 +159,7 @@ describe('Reducers :', () => {
         isLoading: true,
       },
     };
-    expect(reducer(previousState, ducksAuth.authSignin(signinMethod))).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authSignin(signinMethod))).toEqual(expectedState);
   });
   test('should handle start auth signin failed', () => {
     const previousState: AuthState = {
@@ -190,9 +177,7 @@ describe('Reducers :', () => {
         error: errorAuth,
       },
     };
-    expect(
-      reducer(previousState, ducksAuth.authSigninFailed(errorAuth)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksAuth.authSigninFailed(errorAuth))).toEqual(expectedState);
   });
   test('should handle start auth signin Success', () => {
     const previousState: AuthState = {
@@ -210,9 +195,7 @@ describe('Reducers :', () => {
         isLoading: false,
       },
     };
-    expect(reducer(previousState, ducksAuth.authSigninSuccess())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authSigninSuccess())).toEqual(expectedState);
   });
 
   test('should handle start auth signup', () => {
@@ -233,9 +216,7 @@ describe('Reducers :', () => {
         isLoading: true,
       },
     };
-    expect(reducer(previousState, ducksAuth.authSignup(signupData))).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authSignup(signupData))).toEqual(expectedState);
   });
   test('should handle start auth signup failed', () => {
     const previousState: AuthState = {
@@ -253,9 +234,7 @@ describe('Reducers :', () => {
         error: errorAuth,
       },
     };
-    expect(
-      reducer(previousState, ducksAuth.authSignupFailed(errorAuth)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksAuth.authSignupFailed(errorAuth))).toEqual(expectedState);
   });
   test('should handle start auth signup Success', () => {
     const previousState: AuthState = {
@@ -275,9 +254,7 @@ describe('Reducers :', () => {
         isLoading: false,
       },
     };
-    expect(reducer(previousState, ducksAuth.authSignupSuccess())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authSignupSuccess())).toEqual(expectedState);
   });
 
   test('should handle start auth signout', () => {
@@ -295,9 +272,7 @@ describe('Reducers :', () => {
         isLoading: true,
       },
     };
-    expect(reducer(previousState, ducksAuth.authSignout())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authSignout())).toEqual(expectedState);
   });
   test('should handle start auth signout failed', () => {
     const previousState: AuthState = {
@@ -315,9 +290,7 @@ describe('Reducers :', () => {
         error: errorAuth,
       },
     };
-    expect(
-      reducer(previousState, ducksAuth.authSignoutFailed(errorAuth)),
-    ).toEqual(expectedState);
+    expect(reducer(previousState, ducksAuth.authSignoutFailed(errorAuth))).toEqual(expectedState);
   });
   test('should handle start auth signout Success', () => {
     const previousState: AuthState = {
@@ -346,8 +319,6 @@ describe('Reducers :', () => {
         ...ducksAuth.initialState.me,
       },
     };
-    expect(reducer(previousState, ducksAuth.authSignoutSuccess())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksAuth.authSignoutSuccess())).toEqual(expectedState);
   });
 });

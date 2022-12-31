@@ -1,10 +1,10 @@
 import {expectSaga} from 'redux-saga-test-plan';
 
+import * as sagasCommon from '../common';
+
 import Common from '~/services/FirestoreModel/Common';
 import * as ducksCommon from '~/store/slices/common';
 import {CommonData} from '~/types/common';
-
-import * as sagasCommon from '../common';
 
 describe('Sagas: ', () => {
   describe('commonFetchSaga', () => {

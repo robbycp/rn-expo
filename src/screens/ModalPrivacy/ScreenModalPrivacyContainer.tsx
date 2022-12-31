@@ -1,10 +1,11 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+
+import ScreenModalPrivacyView from './ScreenModalPrivacyView';
+
 import {RootState} from '~/store/rootReducers';
 import {commonClear, commonFetch} from '~/store/slices/common';
 import {CommonData} from '~/types/common';
-
-import ScreenModalPrivacyView from './ScreenModalPrivacyView';
 
 const ScreenModalPrivacyContainer = () => {
   const dispatch = useDispatch();

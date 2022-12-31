@@ -1,10 +1,10 @@
-import {useMutation, useQuery, useQueryClient} from 'react-query';
 import type {AxiosError, AxiosResponse} from 'axios';
+import {useMutation, useQuery, useQueryClient} from 'react-query';
+import {useDispatch} from 'react-redux';
 
 import apiCrud from '~/services/api/apiCrud';
-import {useDispatch} from 'react-redux';
-import {snackbarShow} from '~/store/slices/snackbar';
 import type {Todo} from '~/services/api/apiCrud';
+import {snackbarShow} from '~/store/slices/snackbar';
 
 enum ServerStateKeysTodo {
   TodosGet = 'todos-get',

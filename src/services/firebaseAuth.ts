@@ -1,7 +1,7 @@
-import Constants from 'expo-constants';
 import auth from '@react-native-firebase/auth';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import type {FirebaseAuthTypes} from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import Constants from 'expo-constants';
 
 GoogleSignin.configure({
   webClientId: Constants.expoConfig?.extra?.GOOGLE_CLIENT_ID,

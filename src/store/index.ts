@@ -1,4 +1,4 @@
-import createSagaMiddleware from 'redux-saga';
+import {configureStore} from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -9,11 +9,11 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import {configureStore} from '@reduxjs/toolkit';
+import createSagaMiddleware from 'redux-saga';
 
+import rootContext from '~/store/rootContext';
 import rootReducers from '~/store/rootReducers';
 import sagas from '~/store/rootSagas';
-import rootContext from '~/store/rootContext';
 import AsyncStorage from '~/utils/asyncStorage';
 
 export const persistConfig = {
@@ -47,7 +47,7 @@ export default () => {
     });
   }
 
-  let persistor = persistStore(store);
+  const persistor = persistStore(store);
 
   if (__DEV__) {
     persistor.purge();

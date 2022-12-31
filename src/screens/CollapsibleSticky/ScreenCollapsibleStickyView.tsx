@@ -1,10 +1,10 @@
 import React from 'react';
 import {Animated, View, Text, StyleSheet} from 'react-native';
-import {useCollapsibleHeader} from 'react-navigation-collapsible';
 import {useTheme} from 'react-native-paper';
+import {useCollapsibleHeader} from 'react-navigation-collapsible';
 
-import CollapsibleItem from '~/components/custom/CollapsibleItem';
 import Header from '~/components/basic/Header/Header';
+import CollapsibleItem from '~/components/custom/CollapsibleItem';
 
 const data = [...Array(50).keys()];
 
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
 
 const ScreenCollapsibleStickyView = () => {
   const theme = useTheme();
-  const {onScroll, containerPaddingTop, scrollIndicatorInsetTop, translateY} =
-    useCollapsibleHeader({
+  const {onScroll, containerPaddingTop, scrollIndicatorInsetTop, translateY} = useCollapsibleHeader(
+    {
       navigationOptions: {
         header: () => {
           return <Header title="Collapsible Sticky" withBackButton />;
@@ -33,7 +33,8 @@ const ScreenCollapsibleStickyView = () => {
       config: {
         collapsedColor: theme.colors.primary,
       },
-    });
+    },
+  );
 
   const stickyHeaderHeight = 100;
 

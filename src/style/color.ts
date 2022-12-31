@@ -1,8 +1,4 @@
-import {
-  MD2Colors as Colors,
-  MD3DarkTheme as DarkTheme,
-  DefaultTheme,
-} from 'react-native-paper';
+import {MD2Colors as Colors, MD3DarkTheme as DarkTheme, DefaultTheme} from 'react-native-paper';
 
 export const customColors = {
   amber50: Colors.amber50,

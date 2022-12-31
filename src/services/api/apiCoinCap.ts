@@ -1,5 +1,5 @@
-import {createAxios, createExportedEndpoint} from '~/utils/api';
 import type {Endpoint} from '~/types/api';
+import {createAxios, createExportedEndpoint} from '~/utils/api';
 
 export interface Asset {
   id: string;
@@ -20,7 +20,7 @@ const apiCoinCapBase = createAxios({
 });
 export interface ResponseCoinCap {
   assetsGet: Endpoint<
-    {},
+    object,
     {
       data: Asset[];
       timestamp: number;

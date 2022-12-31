@@ -19,46 +19,45 @@ const styles = StyleSheet.create({
 
 const ScreenCollapsibleBackgroundView = () => {
   const theme = useTheme();
-  const {onScroll, containerPaddingTop, scrollIndicatorInsetTop} =
-    useCollapsibleHeader({
-      navigationOptions: {
-        header: () => {
-          return (
-            <View style={styles.containerHeader}>
-              <Header title="Collapsible Background" />
-              <ImageBackground
-                source={{
-                  uri: 'https://artwork.wallartprints.com/media/catalog/category/mountain-pictures.jpg',
-                }}
-                style={[styles.image, theme.layout.center]}>
-                <View>
-                  <Avatar.Image
-                    size={100}
-                    source={{uri: 'https://source.unsplash.com/400x400/?man'}}
-                  />
-                  <Title>Robbycp</Title>
-                </View>
-              </ImageBackground>
-            </View>
-          );
-        },
-        // headerShown: false,
-        headerStyle: {
-          height: 250,
-        },
-        headerBackground: (
-          <Image
-            source={{
-              uri: 'https://artwork.wallartprints.com/media/catalog/category/mountain-pictures.jpg',
-            }}
-            style={styles.image}
-          />
-        ),
+  const {onScroll, containerPaddingTop, scrollIndicatorInsetTop} = useCollapsibleHeader({
+    navigationOptions: {
+      header: () => {
+        return (
+          <View style={styles.containerHeader}>
+            <Header title="Collapsible Background" />
+            <ImageBackground
+              source={{
+                uri: 'https://artwork.wallartprints.com/media/catalog/category/mountain-pictures.jpg',
+              }}
+              style={[styles.image, theme.layout.center]}>
+              <View>
+                <Avatar.Image
+                  size={100}
+                  source={{uri: 'https://source.unsplash.com/400x400/?man'}}
+                />
+                <Title>Robbycp</Title>
+              </View>
+            </ImageBackground>
+          </View>
+        );
       },
-      config: {
-        collapsedColor: theme.colors.primary,
+      // headerShown: false,
+      headerStyle: {
+        height: 250,
       },
-    });
+      headerBackground: (
+        <Image
+          source={{
+            uri: 'https://artwork.wallartprints.com/media/catalog/category/mountain-pictures.jpg',
+          }}
+          style={styles.image}
+        />
+      ),
+    },
+    config: {
+      collapsedColor: theme.colors.primary,
+    },
+  });
 
   return (
     <Animated.FlatList

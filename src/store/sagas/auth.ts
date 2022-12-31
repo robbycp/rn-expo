@@ -1,7 +1,11 @@
-import {call, getContext, put} from 'redux-saga/effects';
 import type {PayloadAction} from '@reduxjs/toolkit';
+import {call, getContext, put} from 'redux-saga/effects';
+
+import {ContextName, RootContext} from '../rootContext';
 
 import ModelUser from '~/services/FirestoreModel/User';
+import {currentUser, signInGoogle, signOut} from '~/services/firebaseAuth';
+import {FirestoreData} from '~/services/firebaseFirestore';
 import {
   authCheckFailed,
   authCheckSuccess,
@@ -17,9 +21,6 @@ import {
   authSignupFailed,
   authSignupSuccess,
 } from '~/store/slices/auth';
-import {currentUser, signInGoogle, signOut} from '~/services/firebaseAuth';
-import {ContextName, RootContext} from '../rootContext';
-import {FirestoreData} from '~/services/firebaseFirestore';
 import type {ClientData, FirebaseUserCredential} from '~/types/user';
 
 export function* authCheckSaga() {
@@ -37,10 +38,7 @@ export function* authCheckSaga() {
 export function* authMeSaga(action: PayloadAction<string>) {
   try {
     const userId = action.payload;
-    const userData: FirestoreData<ClientData> = yield call(
-      ModelUser.getDataById,
-      userId,
-    );
+    const userData: FirestoreData<ClientData> = yield call(ModelUser.getDataById, userId);
     const userDataClient = userData.data();
     if (!userData.exists) {
       yield put(authSignout());
@@ -61,12 +59,10 @@ export function* authMeSaga(action: PayloadAction<string>) {
 }
 
 export function* authSigninSaga() {
-  const navigator: RootContext[ContextName.NAVIGATOR] = yield getContext(
-    ContextName.NAVIGATOR,
-  );
+  const navigator: RootContext[ContextName.NAVIGATOR] = yield getContext(ContextName.NAVIGATOR);
   try {
-    let userAuth: FirebaseUserCredential = yield call(signInGoogle);
-    let userData: FirestoreData<ClientData> = yield call(
+    const userAuth: FirebaseUserCredential = yield call(signInGoogle);
+    const userData: FirestoreData<ClientData> = yield call(
       ModelUser.getDataById,
       userAuth.user.uid,
     );
@@ -104,14 +100,9 @@ export function* authSigninSaga() {
 }
 
 export function* authSignupSaga(action: PayloadAction<ClientData>) {
-  const navigator: RootContext[ContextName.NAVIGATOR] = yield getContext(
-    ContextName.NAVIGATOR,
-  );
+  const navigator: RootContext[ContextName.NAVIGATOR] = yield getContext(ContextName.NAVIGATOR);
   try {
-    const createdUser: ClientData = yield call(
-      ModelUser.createDataById,
-      action.payload,
-    );
+    const createdUser: ClientData = yield call(ModelUser.createDataById, action.payload);
     yield put(authSignupSuccess());
     yield put(authMeSuccess(createdUser));
     navigator.navigate('Home');
@@ -121,9 +112,7 @@ export function* authSignupSaga(action: PayloadAction<ClientData>) {
 }
 
 export function* authSignoutSaga() {
-  const navigator: RootContext[ContextName.NAVIGATOR] = yield getContext(
-    ContextName.NAVIGATOR,
-  );
+  const navigator: RootContext[ContextName.NAVIGATOR] = yield getContext(ContextName.NAVIGATOR);
   try {
     yield call(signOut);
     yield put(authSignoutSuccess());

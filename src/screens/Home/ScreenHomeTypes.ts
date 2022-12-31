@@ -1,4 +1,5 @@
 import {StackScreenProps} from '@react-navigation/stack';
+
 import {RootStackParamList} from '~/types/navigation';
 
 export interface ListFeature {
