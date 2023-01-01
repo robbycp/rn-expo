@@ -17,7 +17,7 @@ export function* commonFetchSaga(action: PayloadAction<{key: CommonKey}>) {
         content: contentData.data()?.content,
       }),
     );
-  } catch (error) {
+  } catch {
     yield put(commonFetchFailed());
   }
 }

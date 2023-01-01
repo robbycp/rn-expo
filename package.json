@@ -2,7 +2,7 @@
   "name": "rn-expo-template",
   "version": "0.1.0",
   "scripts": {
-    "lint": "eslint --fix --cache \"src/**/*.{js,jsx,ts,tsx}\"",
+    "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "start": "expo start --dev-client",
     "eas-build-pre-install": "sh ./scripts/eas-build-pre-install.sh",
     "build:android:dev": "eas build --profile dev --platform android",

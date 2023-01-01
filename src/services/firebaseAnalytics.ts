@@ -11,13 +11,10 @@ export async function initialAnalytics() {
     if (trackingStatus.status === 'undetermined') {
       trackingStatus = await Transparency.requestTrackingPermissionsAsync();
     }
-    let isEnabled = false;
     if (trackingStatus.status === 'granted' || !isAvailableTracking) {
       // enable tracking features
       await firebase.analytics().setAnalyticsCollectionEnabled(true);
-      isEnabled = true;
     } else {
-      isEnabled = false;
       await firebase.analytics().setAnalyticsCollectionEnabled(false);
     }
   } catch (error) {

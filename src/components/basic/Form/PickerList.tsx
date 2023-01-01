@@ -6,6 +6,7 @@ import TextInput, {TextInputCustomProps} from './TextInput';
 
 import BottomPanel from '~/components/basic/BottomPanel';
 
+type PickerListLeftProps = React.ComponentProps<typeof List.Item>['left'];
 interface PickerItem {
   id: string;
   title: string;
@@ -19,6 +20,17 @@ interface PickerListProps {
   propsTextInput?: TextInputCustomProps;
   value: PickerItem;
 }
+const getPickerListLeft =
+  ({item, value}: {item: PickerItem; value: PickerItem}) =>
+  (props: PickerListLeftProps) =>
+    (
+      <RadioButton.Android
+        {...props}
+        value={value.id}
+        status={value.id === item.id ? 'checked' : 'unchecked'}
+      />
+    );
+
 const PickerList = ({label, onChange, propsTextInput, value, list}: PickerListProps) => {
   const [isShowBottom, setisShowBottom] = React.useState(false);
   const handleShowBottom = () => {
@@ -36,13 +48,7 @@ const PickerList = ({label, onChange, propsTextInput, value, list}: PickerListPr
       onPress={() => onPressItem(item)}
       title={item.title}
       description={item.description}
-      left={props => (
-        <RadioButton.Android
-          {...props}
-          value={value.id}
-          status={value.id === item.id ? 'checked' : 'unchecked'}
-        />
-      )}
+      left={getPickerListLeft({item, value})}
     />
   );
   const newPropsTextInput = {

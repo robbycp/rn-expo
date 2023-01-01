@@ -9,7 +9,7 @@ import ClipboardHome from './ClipboardHome';
 import HTMLHome from './HTMLHome';
 import LanguageOption from './LanguageOption';
 import NetworkRead from './NetworkRead';
-import {ScreenHomeViewProps} from './ScreenHomeTypes';
+import {ListFeature, ScreenHomeViewProps} from './ScreenHomeTypes';
 import Signin from './Signin';
 import SnackbarHome from './SnackbarHome';
 
@@ -18,7 +18,13 @@ import VersionApp from '~/components/custom/VersionApp';
 import metrics from '~/style/metrics';
 import i18n from '~/translations';
 
+type ListItemLeftProps = React.ComponentProps<typeof List.Item>['left'];
 const marginVideoPlayer = 16;
+
+const getLeftItem =
+  ({position, item}: {position: number; item: ListFeature}): ListItemLeftProps =>
+  props =>
+    <List.Icon key={`${position}-${item.title}-${item.icon}-icon`} {...props} icon={item.icon} />;
 
 const styles = StyleSheet.create({
   divider: {height: 3},
@@ -53,7 +59,6 @@ const ScreenHomeView = ({
   const theme = useTheme();
 
   const usingHermes = !!global.HermesInternal;
-
   return (
     <SafeAreaView>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -118,13 +123,7 @@ const ScreenHomeView = ({
               <List.Item
                 title={item.title}
                 onPress={item.onPress}
-                left={props => (
-                  <List.Icon
-                    key={`${position}-${item.title}-${item.icon}-icon`}
-                    {...props}
-                    icon={item.icon}
-                  />
-                )}
+                left={getLeftItem({position, item})}
               />
               <Divider key={`${position}-${item.title}-divider`} style={[styles.divider]} />
             </View>

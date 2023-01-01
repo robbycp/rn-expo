@@ -17,30 +17,30 @@ const styles = StyleSheet.create({
   },
 });
 
+const CustomHeader = () => {
+  const theme = useTheme();
+  return (
+    <View style={styles.containerHeader}>
+      <Header title="Collapsible Background" />
+      <ImageBackground
+        source={{
+          uri: 'https://artwork.wallartprints.com/media/catalog/category/mountain-pictures.jpg',
+        }}
+        style={[styles.image, theme.layout.center]}>
+        <View>
+          <Avatar.Image size={100} source={{uri: 'https://source.unsplash.com/400x400/?man'}} />
+          <Title>Robbycp</Title>
+        </View>
+      </ImageBackground>
+    </View>
+  );
+};
+
 const ScreenCollapsibleBackgroundView = () => {
   const theme = useTheme();
   const {onScroll, containerPaddingTop, scrollIndicatorInsetTop} = useCollapsibleHeader({
     navigationOptions: {
-      header: () => {
-        return (
-          <View style={styles.containerHeader}>
-            <Header title="Collapsible Background" />
-            <ImageBackground
-              source={{
-                uri: 'https://artwork.wallartprints.com/media/catalog/category/mountain-pictures.jpg',
-              }}
-              style={[styles.image, theme.layout.center]}>
-              <View>
-                <Avatar.Image
-                  size={100}
-                  source={{uri: 'https://source.unsplash.com/400x400/?man'}}
-                />
-                <Title>Robbycp</Title>
-              </View>
-            </ImageBackground>
-          </View>
-        );
-      },
+      header: CustomHeader,
       // headerShown: false,
       headerStyle: {
         height: 250,

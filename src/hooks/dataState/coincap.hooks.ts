@@ -9,7 +9,5 @@ export const useCoincapGet = () => {
     'coincap-get',
     () => apiCoinCap.assetsGet(),
   );
-  query.data?.data.timestamp;
-  query.error?.message;
   return query;
 };

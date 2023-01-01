@@ -1,4 +1,4 @@
-import {TransitionPresets, createStackNavigator} from '@react-navigation/stack';
+import {TransitionPresets, createStackNavigator, StackHeaderProps} from '@react-navigation/stack';
 import React from 'react';
 import {Platform} from 'react-native';
 
@@ -20,6 +20,13 @@ import type {RootStackParamList} from '~/types/navigation';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
+const HeaderRoute = ({route}: StackHeaderProps) => {
+  return <Header title={route.name} />;
+};
+const HeaderModal = ({route}: StackHeaderProps) => {
+  return <Header title={route.name} withBackButton={Platform.OS === 'android'} />;
+};
+
 const RootNavigator: React.FunctionComponent = () => {
   return (
     <Stack.Navigator initialRouteName="Splash">
@@ -28,9 +35,7 @@ const RootNavigator: React.FunctionComponent = () => {
           ...(Platform.OS === 'android'
             ? TransitionPresets.FadeFromBottomAndroid
             : TransitionPresets.DefaultTransition),
-          header: ({route}) => {
-            return <Header title={route.name} />;
-          },
+          header: HeaderRoute,
         }}>
         <Stack.Screen name="Collapsible Background" component={ScreenCollapsibleBackground} />
         <Stack.Screen name="Collapsible Default" component={ScreenCollapsibleDefault} />
@@ -48,9 +53,7 @@ const RootNavigator: React.FunctionComponent = () => {
       <Stack.Group
         screenOptions={{
           presentation: 'modal',
-          header: ({route}) => {
-            return <Header title={route.name} withBackButton={Platform.OS === 'android'} />;
-          },
+          header: HeaderModal,
         }}>
         <Stack.Screen name="Modal Privacy" component={ScreenModalPrivacy} />
       </Stack.Group>

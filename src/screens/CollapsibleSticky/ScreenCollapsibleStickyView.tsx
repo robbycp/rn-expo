@@ -21,14 +21,14 @@ const styles = StyleSheet.create({
   },
 });
 
+const CustomHeader = () => <Header title="Collapsible Sticky" withBackButton />;
+
 const ScreenCollapsibleStickyView = () => {
   const theme = useTheme();
   const {onScroll, containerPaddingTop, scrollIndicatorInsetTop, translateY} = useCollapsibleHeader(
     {
       navigationOptions: {
-        header: () => {
-          return <Header title="Collapsible Sticky" withBackButton />;
-        },
+        header: CustomHeader,
       },
       config: {
         collapsedColor: theme.colors.primary,

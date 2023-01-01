@@ -8,13 +8,15 @@ import CollapsibleItem from '~/components/custom/CollapsibleItem';
 
 const data = [...Array(50).keys()];
 
+const CustomHeader = () => {
+  return <Header title="Collapsible Default" withBackButton />;
+};
+
 const ScreenCollapsibleDefaultView = () => {
   const theme = useTheme();
   const {onScroll, containerPaddingTop, scrollIndicatorInsetTop} = useCollapsibleHeader({
     navigationOptions: {
-      header: () => {
-        return <Header title="Collapsible Default" withBackButton />;
-      },
+      header: CustomHeader,
       config: {
         collapsedColor: theme.colors.primary,
         disableOpacity: true,
