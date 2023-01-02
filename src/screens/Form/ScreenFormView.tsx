@@ -1,12 +1,14 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import {ScrollView} from 'react-native';
-import {Subheading, Title, useTheme} from 'react-native-paper';
+import {Subheading, Title} from 'react-native-paper';
 
 import {ScreenFormViewProps} from './screenFormTypes';
 
 import DatetimePicker from '~/components/basic/Form/DatetimePicker';
 import PickerList from '~/components/basic/Form/PickerList';
 import TextInput from '~/components/basic/Form/TextInput';
+import {useAppTheme} from '~/style/theme';
 
 const list = [
   {id: '1', title: 'java', description: 'java', value: 'java'},
@@ -36,8 +38,8 @@ const ScreenFormView = ({
   setFormDate,
   setFormTime,
 }: ScreenFormViewProps) => {
-  const theme = useTheme();
-  const [formLanguange, setformLanguange] = React.useState(list[0]);
+  const theme = useAppTheme();
+  const [formLanguange, setformLanguange] = React.useState<any>(list[0]);
   return (
     <ScrollView contentContainerStyle={theme.spacing.p8}>
       <PickerList
@@ -106,9 +108,17 @@ const ScreenFormView = ({
       />
       <Title>Datetime picker</Title>
       <Subheading>Date</Subheading>
-      <DatetimePicker mode="date" onChange={val => setFormDate(val)} value={formDate} />
+      <DatetimePicker
+        mode="date"
+        onChange={val => setFormDate(val)}
+        value={dayjs(formDate).toISOString()}
+      />
       <Subheading>Time</Subheading>
-      <DatetimePicker mode="time" onChange={val => setFormTime(val)} value={formTime} />
+      <DatetimePicker
+        mode="time"
+        onChange={val => setFormTime(val)}
+        value={dayjs(formTime).toISOString()}
+      />
     </ScrollView>
   );
 };

@@ -3,6 +3,8 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Modal, Portal, useTheme} from 'react-native-paper';
 
+import {useAppTheme} from '~/style/theme';
+
 interface LoadingOverlayProps {
   isVisible: boolean;
 }
@@ -14,7 +16,7 @@ const styles = StyleSheet.create({
 });
 
 const LoadingOverlay = ({isVisible}: LoadingOverlayProps) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   if (!isVisible) {
     return null;
   }

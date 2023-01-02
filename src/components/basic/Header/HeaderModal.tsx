@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Appbar, Divider, Title, useTheme} from 'react-native-paper';
+import {Appbar, Divider, Title} from 'react-native-paper';
+
+import {useAppTheme} from '~/style/theme';
 
 interface HeaderProps {
   customRightIcon?: React.ReactElement;
@@ -19,7 +21,7 @@ const styles = StyleSheet.create({
 });
 
 const Header = ({title}: HeaderProps) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <Appbar.Header>
       <View style={styles.content}>

@@ -2,7 +2,7 @@ import * as Application from 'expo-application';
 import Constants from 'expo-constants';
 import React from 'react';
 import {SafeAreaView, ScrollView, StatusBar, StyleSheet, useColorScheme, View} from 'react-native';
-import {Button, Divider, List, Subheading, Switch, Text, Title, useTheme} from 'react-native-paper';
+import {Button, Divider, List, Subheading, Switch, Text, Title} from 'react-native-paper';
 import * as Sentry from 'sentry-expo';
 
 import ClipboardHome from './ClipboardHome';
@@ -16,6 +16,7 @@ import SnackbarHome from './SnackbarHome';
 import LoadingOverlay from '~/components/basic/Loading/LoadingOverlay';
 import VersionApp from '~/components/custom/VersionApp';
 import metrics from '~/style/metrics';
+import {useAppTheme} from '~/style/theme';
 import i18n from '~/translations';
 
 type ListItemLeftProps = React.ComponentProps<typeof List.Item>['left'];
@@ -56,7 +57,7 @@ const ScreenHomeView = ({
     }, 2000);
   };
 
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   const usingHermes = !!global.HermesInternal;
   return (

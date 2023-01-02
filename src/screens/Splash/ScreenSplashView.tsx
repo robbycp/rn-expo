@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
-import {useTheme} from 'react-native-paper';
+
+import {useAppTheme} from '~/style/theme';
 
 const styles = StyleSheet.create({
   image: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 const ScreenSplashView = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   return (
     <View style={[theme.layout.center, theme.layout.fill]}>

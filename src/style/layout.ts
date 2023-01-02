@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
 
-import {customColors} from './color';
+import {refColor} from './color';
 
 export default StyleSheet.create({
   backgroundWhite: {
-    backgroundColor: customColors.white,
+    backgroundColor: refColor.white,
   },
   /* Column Layouts */
   column: {

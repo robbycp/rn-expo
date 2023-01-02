@@ -1,9 +1,10 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Modal from 'react-native-modal';
-import {Divider, IconButton, Title, useTheme} from 'react-native-paper';
+import {Divider, IconButton, Title} from 'react-native-paper';
 
-import {customColors} from '~/style/color';
+import {refColor} from '~/style/color';
+import {useAppTheme} from '~/style/theme';
 
 interface Props {
   children: React.ReactElement;
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16,
   },
   containerHeader: {
-    borderBottomColor: customColors.grey400,
+    borderBottomColor: refColor.grey400,
     borderBottomWidth: 2,
   },
   containerModal: {
@@ -50,15 +51,9 @@ const BottomPanel = ({
   isVisible,
   textHeader,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const closeButton = (
-    <IconButton
-      icon="close"
-      color={theme.colors.custom.red500}
-      size={30}
-      onPress={handleClose}
-      style={styles.iconClose}
-    />
+    <IconButton icon="close" size={30} onPress={handleClose} style={styles.iconClose} />
   );
   let heightBottomPanel = {};
   if (isFullScreen) {

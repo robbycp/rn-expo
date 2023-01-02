@@ -1,7 +1,8 @@
 import LottieView from 'lottie-react-native';
 import React from 'react';
 import {View} from 'react-native';
-import {useTheme} from 'react-native-paper';
+
+import {useAppTheme} from '~/style/theme';
 
 interface Props {
   children: React.ReactElement;
@@ -10,7 +11,7 @@ interface Props {
 
 // Change LottieView with other animation or use default ActivityIndicator
 const LoadingContent = ({isVisible, children}: Props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   if (!isVisible) {
     return children;
   }

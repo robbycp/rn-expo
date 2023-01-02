@@ -1,11 +1,12 @@
 import React from 'react';
 import {FlatList, View} from 'react-native';
-import {Button, Card, Paragraph, Text, Title, useTheme} from 'react-native-paper';
+import {Button, Card, Paragraph, Text, Title} from 'react-native-paper';
 
 import TextInputCustom from '~/components/basic/Form/TextInput';
 import LoadingContent from '~/components/basic/Loading/LoadingContent';
 import {useTodosGet} from '~/hooks/dataState/crud.hooks';
 import {Todo} from '~/services/api/apiCrud';
+import {useAppTheme} from '~/style/theme';
 
 interface Props {
   formTodo: Todo;
@@ -22,7 +23,7 @@ const TabCrudView = ({
   setFormTodo,
   todosQuery,
 }: Props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <View>
       <View>

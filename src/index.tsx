@@ -2,7 +2,7 @@ import {useReduxDevToolsExtension} from '@react-navigation/devtools';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
-import {Provider as PaperProvider, Snackbar, useTheme} from 'react-native-paper';
+import {adaptNavigationTheme, Provider as PaperProvider, Snackbar} from 'react-native-paper';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import {Provider as StoreProvider, useDispatch, useSelector} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
@@ -18,7 +18,13 @@ import {initOneSignal} from '~/services/notificationOneSignal';
 import configureStore from '~/store';
 import {appNavigationReady, appStartCheck} from '~/store/slices/app';
 import {getSnackbarState, snackbarHide} from '~/store/slices/snackbar';
-import {RNDarkTheme, RNLightTheme, darkTheme, lightTheme} from '~/style/theme';
+import {
+  RNDarkTheme,
+  RNLightTheme,
+  RNPaperDarkTheme,
+  RNPaperLightTheme,
+  useAppTheme,
+} from '~/style/theme';
 import {routingInstrumentation, CustomErrorBoundary} from '~/utils/errorHandler';
 import '~/translations';
 
@@ -34,10 +40,16 @@ initialAnalytics();
 
 const queryClient = new QueryClient();
 
+const {LightTheme, DarkTheme} = adaptNavigationTheme({
+  reactNavigationDark: RNDarkTheme,
+  reactNavigationLight: RNLightTheme,
+  materialLight: RNPaperLightTheme,
+  materialDark: RNPaperDarkTheme,
+});
 const AppSnackbar = () => {
   const dispatch = useDispatch();
   const scheme = useColorScheme();
-  const theme = useTheme();
+  const theme = useAppTheme();
   const routeNameRef = React.useRef<string | undefined>('');
   const snackbar = useSelector(getSnackbarState);
   const onDismissSnackBar = () => dispatch(snackbarHide());
@@ -46,12 +58,12 @@ const AppSnackbar = () => {
   if (snackbar.type === 'error') {
     backgroundColor = theme.colors.error;
   } else if (snackbar.type === 'success') {
-    backgroundColor = theme.colors.custom.green400;
+    backgroundColor = theme.colors.primary;
   }
   return (
     <NavigationContainer
       linking={linking}
-      theme={scheme === 'dark' ? RNDarkTheme : RNLightTheme}
+      theme={scheme === 'dark' ? DarkTheme : LightTheme}
       ref={navigationRef}
       onReady={() => {
         routeNameRef.current = navigationRef.getCurrentRoute()?.name;
@@ -93,7 +105,7 @@ const App = () => {
       <QueryClientProvider client={queryClient}>
         <StoreProvider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <PaperProvider theme={scheme === 'dark' ? darkTheme : lightTheme}>
+            <PaperProvider theme={scheme === 'dark' ? RNPaperDarkTheme : RNPaperLightTheme}>
               <AppSnackbar />
             </PaperProvider>
           </PersistGate>

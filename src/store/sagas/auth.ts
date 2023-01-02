@@ -1,3 +1,4 @@
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import type {PayloadAction} from '@reduxjs/toolkit';
 import {call, getContext, put} from 'redux-saga/effects';
 
@@ -25,7 +26,7 @@ import type {ClientData, FirebaseUserCredential} from '~/types/user';
 
 export function* authCheckSaga() {
   try {
-    const user = yield call(currentUser);
+    const user: FirebaseAuthTypes.User | null = yield call(currentUser);
     if (user) {
       yield put(authMe(user.uid));
     }

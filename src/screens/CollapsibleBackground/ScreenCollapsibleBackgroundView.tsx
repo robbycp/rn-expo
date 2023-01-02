@@ -1,10 +1,11 @@
 import React from 'react';
 import {Animated, Image, ImageBackground, StyleSheet, View} from 'react-native';
-import {Avatar, Title, useTheme} from 'react-native-paper';
+import {Avatar, Title} from 'react-native-paper';
 import {useCollapsibleHeader} from 'react-navigation-collapsible';
 
 import Header from '~/components/basic/Header/Header';
 import CollapsibleItem from '~/components/custom/CollapsibleItem';
+import {useAppTheme} from '~/style/theme';
 
 const data = [...Array(50).keys()];
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
 });
 
 const CustomHeader = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <View style={styles.containerHeader}>
       <Header title="Collapsible Background" />
@@ -37,7 +38,7 @@ const CustomHeader = () => {
 };
 
 const ScreenCollapsibleBackgroundView = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   const {onScroll, containerPaddingTop, scrollIndicatorInsetTop} = useCollapsibleHeader({
     navigationOptions: {
       header: CustomHeader,

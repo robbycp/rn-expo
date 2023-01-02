@@ -21,8 +21,8 @@ interface PickerListProps {
   value: PickerItem;
 }
 const getPickerListLeft =
-  ({item, value}: {item: PickerItem; value: PickerItem}) =>
-  (props: PickerListLeftProps) =>
+  ({item, value}: {item: PickerItem; value: PickerItem}): PickerListLeftProps =>
+  props =>
     (
       <RadioButton.Android
         {...props}

@@ -5,7 +5,7 @@ import {Auth, AuthMethod, ClientData} from '~/types/user';
 
 export interface AuthState {
   check: {
-    error: Error | null;
+    error: unknown;
     isLoading: boolean;
   };
   data: Auth;
@@ -13,22 +13,22 @@ export interface AuthState {
   isLoading: boolean;
   me: {
     data: ClientData;
-    error: Error | null;
+    error: unknown;
     isLoading: boolean;
   };
   signin: {
     isLoading: boolean;
-    error: Error | null;
+    error: unknown;
     method: AuthMethod | null;
   };
   signout: {
     isLoading: boolean;
-    error: Error | null;
+    error: unknown;
   };
   signup: {
     data: ClientData;
     isLoading: boolean;
-    error: Error | null;
+    error: unknown;
   };
 }
 
@@ -85,7 +85,7 @@ export const authSlice = createSlice({
       state.check.isLoading = true;
       state.check.error = null;
     },
-    authCheckFailed: (state, action: PayloadAction<Error>) => {
+    authCheckFailed: (state, action: PayloadAction<unknown>) => {
       state.check.isLoading = false;
       state.check.error = action.payload;
     },
@@ -97,7 +97,7 @@ export const authSlice = createSlice({
       state.me.isLoading = true;
       state.me.data.id = action.payload;
     },
-    authMeFailed: (state, action: PayloadAction<Error>) => {
+    authMeFailed: (state, action: PayloadAction<unknown>) => {
       state.me.isLoading = false;
       state.me.error = action.payload;
     },
@@ -111,7 +111,7 @@ export const authSlice = createSlice({
       state.signin.isLoading = true;
       state.signin.method = action.payload;
     },
-    authSigninFailed: (state, action: PayloadAction<Error>) => {
+    authSigninFailed: (state, action: PayloadAction<unknown>) => {
       state.signin.isLoading = false;
       state.signin.error = action.payload;
     },
@@ -124,7 +124,7 @@ export const authSlice = createSlice({
       state.signup.isLoading = true;
       state.signup.data = action.payload;
     },
-    authSignupFailed: (state, action: PayloadAction<Error>) => {
+    authSignupFailed: (state, action: PayloadAction<unknown>) => {
       state.signup.isLoading = false;
       state.signup.error = action.payload;
     },
@@ -138,7 +138,7 @@ export const authSlice = createSlice({
     authSignout: state => {
       state.signout.isLoading = true;
     },
-    authSignoutFailed: (state, action: PayloadAction<Error>) => {
+    authSignoutFailed: (state, action: PayloadAction<unknown>) => {
       state.signout.isLoading = false;
       state.signout.error = action.payload;
     },

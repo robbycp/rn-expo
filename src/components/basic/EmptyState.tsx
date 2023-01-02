@@ -1,6 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Subheading, Title, Button, useTheme} from 'react-native-paper';
+import {Subheading, Title, Button} from 'react-native-paper';
+
+import {useAppTheme} from '~/style/theme';
 
 interface Props {
   children: React.ReactElement;
@@ -23,7 +25,7 @@ const EmptyState = ({
   textButtonCancel,
   textButtonSubmit = 'Submit',
 }: Props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   if (!isVisible) {
     return children;
   }
