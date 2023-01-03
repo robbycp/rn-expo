@@ -1,6 +1,5 @@
 import React from 'react';
 import {Animated, View, TextInput, StyleSheet} from 'react-native';
-import {useTheme} from 'react-native-paper';
 import {CollapsibleSubHeaderAnimator, useCollapsibleSubHeader} from 'react-navigation-collapsible';
 
 import CollapsibleItem from '~/components/custom/CollapsibleItem';

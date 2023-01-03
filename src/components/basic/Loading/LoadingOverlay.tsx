@@ -1,7 +1,7 @@
 import LottieView from 'lottie-react-native';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Modal, Portal, useTheme} from 'react-native-paper';
+import {Modal, Portal} from 'react-native-paper';
 
 import {useAppTheme} from '~/style/theme';
 
