@@ -1,13 +1,10 @@
 import axios, {AxiosRequestConfig, AxiosResponse} from 'axios';
 import UrlPattern from 'url-pattern';
+
 import type {Endpoint} from '~/types/api';
 
-type AxiosRequest<RequestType> = Omit<
-  AxiosRequestConfig<RequestType>,
-  'url' | 'method'
->;
-interface ApiOptions<RequestType, ResponseType>
-  extends AxiosRequest<RequestType> {
+type AxiosRequest<RequestType> = Omit<AxiosRequestConfig<RequestType>, 'url' | 'method'>;
+interface ApiOptions<RequestType, ResponseType> extends AxiosRequest<RequestType> {
   endpoint?: Endpoint<RequestType, ResponseType>;
   paramsUrl?: Record<string, unknown>;
 }
@@ -29,18 +26,13 @@ type CreateAxios = (
 ) => Promise<AxiosResponse<ResponseType>>;
 
 interface ApiInstance<RequestType, ResponseType> {
-  (apiOptions?: ApiOptions<RequestType, ResponseType>): Promise<
-    AxiosResponse<ResponseType>
-  >;
+  (apiOptions?: ApiOptions<RequestType, ResponseType>): Promise<AxiosResponse<ResponseType>>;
 }
 
 interface ExportedEndpoint {
   <
     Type extends {
-      [Property in keyof Type]: Endpoint<
-        Type[Property]['requestData'],
-        Type[Property]['response']
-      >;
+      [Property in keyof Type]: Endpoint<Type[Property]['requestData'], Type[Property]['response']>;
     },
   >(
     apiInstance: ReturnType<CreateAxios>,
@@ -55,8 +47,7 @@ interface ExportedEndpoint {
 
 export const createAxios: CreateAxios = ({baseURL, baseHeaders}) => {
   return apiOptions => {
-    const {endpoint = {method: 'get', path: ''}, paramsUrl = {}} =
-      apiOptions || {};
+    const {endpoint = {method: 'get', path: ''}, paramsUrl = {}} = apiOptions || {};
 
     const method = endpoint.method;
     const url = getUrl(endpoint.path, paramsUrl);
@@ -87,20 +78,14 @@ export const createAxios: CreateAxios = ({baseURL, baseHeaders}) => {
   };
 };
 
-export const createExportedEndpoint: ExportedEndpoint = (
-  apiInstance,
-  endpoints,
-) => {
+export const createExportedEndpoint: ExportedEndpoint = (apiInstance, endpoints) => {
   return {
     ...Object.keys(endpoints).reduce(
       (prev, key) => {
         const newKeys = key as keyof typeof endpoints;
         const endpoint = endpoints[newKeys];
         prev[newKeys] = apiOptions =>
-          apiInstance<
-            typeof endpoint['requestData'],
-            typeof endpoint['response']
-          >({
+          apiInstance<typeof endpoint['requestData'], typeof endpoint['response']>({
             ...apiOptions,
             endpoint,
           });

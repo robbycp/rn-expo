@@ -33,9 +33,7 @@ describe('Reducers :', () => {
       ...initialState,
       isLoading: false,
     };
-    expect(reducer(previousState, appStartCheckFailed())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, appStartCheckFailed())).toEqual(expectedState);
   });
   test('should handle start app check Success', () => {
     const previousState: AppState = {
@@ -46,8 +44,6 @@ describe('Reducers :', () => {
       ...initialState,
       isLoading: false,
     };
-    expect(reducer(previousState, appStartCheckSuccess())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, appStartCheckSuccess())).toEqual(expectedState);
   });
 });

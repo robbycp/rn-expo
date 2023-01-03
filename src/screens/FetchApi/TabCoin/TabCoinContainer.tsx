@@ -1,7 +1,8 @@
 import React from 'react';
-import {useCoincapGet} from '~/hooks/dataState/coincap.hooks';
 
 import TabCoinView from './TabCoinView';
+
+import {useCoincapGet} from '~/hooks/dataState/coincap.hooks';
 
 const TabCoinContainer = () => {
   const {data, isLoading} = useCoincapGet();

@@ -1,8 +1,5 @@
-// import type {FirebaseAuthTypes} from '@react-native-firebase/auth';
-namespace FirebaseAuthTypes {
-  export type User = {}
-  export type UserCredential = {}
-}
+import type {FirebaseAuthTypes} from '@react-native-firebase/auth';
+
 export enum AuthMethod {
   GOOGLE = 'google',
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import {FlatList} from 'react-native';
-import {Card, Paragraph, useTheme} from 'react-native-paper';
+import {Card, Paragraph} from 'react-native-paper';
 
 import LoadingContent from '~/components/basic/Loading/LoadingContent';
 import type {Asset} from '~/services/api/apiCoinCap';
+import {useAppTheme} from '~/style/theme';
 
 interface Props {
   data?: Asset[];
@@ -11,7 +12,7 @@ interface Props {
 }
 
 const TabCoinView = ({data, isLoading}: Props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <LoadingContent isVisible={isLoading}>
       <FlatList

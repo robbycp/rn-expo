@@ -1,6 +1,8 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Appbar, Divider, Title, useTheme} from 'react-native-paper';
+import {Appbar, Divider, Title} from 'react-native-paper';
+
+import {useAppTheme} from '~/style/theme';
 
 interface HeaderProps {
   customRightIcon?: React.ReactElement;
@@ -19,14 +21,12 @@ const styles = StyleSheet.create({
 });
 
 const Header = ({title}: HeaderProps) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <Appbar.Header>
       <View style={styles.content}>
         <Divider style={[theme.spacing.mt4, styles.divider]} />
-        <Title style={[theme.layout.fill, theme.layout.textCenter]}>
-          {title}
-        </Title>
+        <Title style={[theme.layout.fill, theme.layout.textCenter]}>{title}</Title>
       </View>
     </Appbar.Header>
   );

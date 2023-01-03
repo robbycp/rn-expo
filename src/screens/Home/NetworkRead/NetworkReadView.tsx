@@ -1,6 +1,7 @@
+import {useNetInfo} from '@react-native-community/netinfo';
 import React from 'react';
 import {View, Text} from 'react-native';
-import {useNetInfo} from '@react-native-community/netinfo';
+
 import i18n from '~/translations';
 
 const NetworkReadView = () => {

@@ -1,13 +1,10 @@
 import firestore from '@react-native-firebase/firestore';
 import type {FirebaseFirestoreTypes} from '@react-native-firebase/firestore';
 
-export interface FirestoreData<T>
-  extends Omit<FirebaseFirestoreTypes.DocumentSnapshot, 'data'> {
+export interface FirestoreData<T> extends Omit<FirebaseFirestoreTypes.DocumentSnapshot, 'data'> {
   data: () => T | undefined;
 }
-export default class FirestoreModel<
-  T extends FirebaseFirestoreTypes.DocumentData,
-> {
+export default class FirestoreModel<T extends FirebaseFirestoreTypes.DocumentData> {
   public model: string;
   public data: T;
 
@@ -44,10 +41,7 @@ export default class FirestoreModel<
   async createDataById(newData: T) {
     try {
       const {id, ...otherData} = newData;
-      await firestore()
-        .collection(this.model)
-        .doc(id)
-        .set(otherData, {merge: true});
+      await firestore().collection(this.model).doc(id).set(otherData, {merge: true});
       return newData;
     } catch (error) {
       throw error;

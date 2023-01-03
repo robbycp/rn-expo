@@ -1,15 +1,17 @@
 import {
-  configureFonts,
-  DarkTheme as PaperDarkTheme,
-  DefaultTheme as PaperDefaultTheme,
-} from 'react-native-paper';
-import {
   DefaultTheme as RNDefaultTheme,
   DarkTheme as RNDefaultDarkTheme,
+  Theme as RNTheme,
 } from '@react-navigation/native';
+import {
+  configureFonts,
+  MD3DarkTheme as PaperDarkTheme,
+  DefaultTheme as PaperDefaultTheme,
+  useTheme,
+} from 'react-native-paper';
 
+import {darkColors, lightColors, md3colors, refColor} from './color';
 import component from './component';
-import {darkColors, lightColors} from './color';
 import fonts from './fonts';
 import layout from './layout';
 import metrics from './metrics';
@@ -25,42 +27,52 @@ const customStyle = {
 
 export type CustomStyle = typeof customStyle;
 
-export const RNLightTheme = {
+export const RNLightTheme: RNTheme = {
   dark: false,
   colors: {
     ...RNDefaultTheme.colors,
     primary: lightColors.primary,
     background: lightColors.background,
     card: lightColors.surface,
-    text: lightColors.text,
-    notification: lightColors.notification,
   },
 };
 
-export const RNDarkTheme = {
+export const RNDarkTheme: RNTheme = {
   dark: true,
   colors: {
     ...RNDefaultDarkTheme.colors,
     primary: darkColors.primary,
     background: darkColors.background,
     card: darkColors.surface,
-    text: darkColors.text,
-    notification: darkColors.notification,
   },
 };
 
-export const lightTheme = {
+export const RNPaperLightTheme = {
   ...PaperDefaultTheme,
   ...customStyle,
+  md3colors: {
+    ...md3colors,
+    readoOnly: md3colors.readOnly.light,
+  },
+  refColor,
   colors: {
     ...lightColors,
   },
 };
 
-export const darkTheme = {
+export const RNPaperDarkTheme = {
   ...PaperDarkTheme,
   ...customStyle,
+  md3colors: {
+    ...md3colors,
+    readoOnly: md3colors.readOnly.dark,
+  },
+  refColor,
   colors: {
     ...darkColors,
   },
 };
+
+type AppTheme = typeof RNPaperLightTheme;
+
+export const useAppTheme = () => useTheme<AppTheme>();

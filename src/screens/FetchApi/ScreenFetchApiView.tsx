@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Tabs from '~/components/basic/Tabs';
-
 import TabCoin from './TabCoin';
 import TabCrud from './TabCrud';
+
+import Tabs from '~/components/basic/Tabs';
 
 const ScreenFetchApiView = () => {
   return (

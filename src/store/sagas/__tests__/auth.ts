@@ -1,12 +1,12 @@
 import {expectSaga} from 'redux-saga-test-plan';
 
+import * as sagasAuth from '../auth';
+
+import ModelUser from '~/services/FirestoreModel/User';
+import {currentUser, signInGoogle, signOut} from '~/services/firebaseAuth';
+import {ContextName} from '~/store/rootContext';
 import * as ducksAuth from '~/store/slices/auth';
 import {AuthMethod} from '~/types/user';
-import {ContextName} from '~/store/rootContext';
-import {currentUser, signInGoogle, signOut} from '~/services/firebaseAuth';
-import ModelUser from '~/services/FirestoreModel/User';
-
-import * as sagasAuth from '../auth';
 
 describe('Sagas: ', () => {
   describe('authCheckSaga', () => {
@@ -212,10 +212,7 @@ describe('Sagas: ', () => {
             displayName: dataAuthUser.user.displayName,
             email: dataAuthUser.user.email,
             photoURL: dataAuthUser.user.photoURL,
-            username: dataAuthUser.user.email.substring(
-              0,
-              dataAuthUser.user.email.indexOf('@'),
-            ),
+            username: dataAuthUser.user.email.substring(0, dataAuthUser.user.email.indexOf('@')),
           }),
         )
         .dispatch(ducksAuth.authSignin(AuthMethod.GOOGLE))

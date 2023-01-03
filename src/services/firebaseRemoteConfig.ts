@@ -1,5 +1,5 @@
-import Constants from 'expo-constants';
 import remoteConfig from '@react-native-firebase/remote-config';
+import Constants from 'expo-constants';
 
 export enum RemoteConfigKeys {
   AWESOME_NEW_FEATURE = 'awesome_new_feature',

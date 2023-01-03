@@ -1,16 +1,6 @@
 import {takeLatest, all} from 'redux-saga/effects';
 
 /* ------------- Types ------------- */
-import {appStartCheck} from '~/store/slices/app';
-import {
-  authCheckRequest,
-  authMe,
-  authSignin,
-  authSignout,
-  authSignup,
-} from '~/store/slices/auth';
-import {commonFetch} from '~/store/slices/common';
-/* ------------- Sagas ------------- */
 import {appStartCheckSaga} from '~/store/sagas/app';
 import {
   authCheckSaga,
@@ -20,6 +10,10 @@ import {
   authSignupSaga,
 } from '~/store/sagas/auth';
 import {commonFetchSaga} from '~/store/sagas/common';
+import {appStartCheck} from '~/store/slices/app';
+import {authCheckRequest, authMe, authSignin, authSignout, authSignup} from '~/store/slices/auth';
+import {commonFetch} from '~/store/slices/common';
+/* ------------- Sagas ------------- */
 /* ------------- API ------------- */
 
 // The API we use is only used from Sagas, so we create it here and pass along

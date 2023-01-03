@@ -13,14 +13,12 @@ const id: Translation = {
     },
     errorMessage: {
       fatal: {
-        message:
-          'Kami telah menerima laporan kesalahan. Mohon untuk membuka ulang aplikasi',
+        message: 'Kami telah menerima laporan kesalahan. Mohon untuk membuka ulang aplikasi',
         title: 'Terjadi Kesalahan',
       },
     },
     flatlistImage: {
-      description:
-        'Gunakan layar ini sebagai eksperimen untuk optimisasi performa',
+      description: 'Gunakan layar ini sebagai eksperimen untuk optimisasi performa',
       fastImage: 'Gambar Cepat',
     },
     home: {

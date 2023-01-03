@@ -1,7 +1,8 @@
 import React from 'react';
 import {View} from 'react-native';
 import {Subheading, Title, Button} from 'react-native-paper';
-import {useTheme} from 'react-native-paper';
+
+import {useAppTheme} from '~/style/theme';
 
 interface Props {
   children: React.ReactElement;
@@ -24,7 +25,7 @@ const EmptyState = ({
   textButtonCancel,
   textButtonSubmit = 'Submit',
 }: Props) => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   if (!isVisible) {
     return children;
   }
@@ -33,24 +34,16 @@ const EmptyState = ({
       <View>
         <Title style={theme.layout.textCenter}>{title}</Title>
         {!!subtitle && (
-          <Subheading style={[theme.spacing.mt8, theme.layout.textCenter]}>
-            {subtitle}
-          </Subheading>
+          <Subheading style={[theme.spacing.mt8, theme.layout.textCenter]}>{subtitle}</Subheading>
         )}
         <View style={[theme.layout.row, theme.spacing.mt16]}>
           {!!textButtonCancel && (
-            <Button
-              mode="outlined"
-              onPress={onCancel}
-              style={[theme.layout.fill]}>
+            <Button mode="outlined" onPress={onCancel} style={[theme.layout.fill]}>
               {textButtonCancel}
             </Button>
           )}
           {!!textButtonSubmit && (
-            <Button
-              mode="contained"
-              onPress={onSubmit}
-              style={[theme.layout.fill]}>
+            <Button mode="contained" onPress={onSubmit} style={[theme.layout.fill]}>
               {textButtonSubmit}
             </Button>
           )}

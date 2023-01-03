@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {useWindowDimensions} from 'react-native';
-import {useTheme} from 'react-native-paper';
 import {TabBar, TabView, SceneMap} from 'react-native-tab-view';
+
+import {useAppTheme} from '~/style/theme';
 
 export interface TabConfig {
   key: string;
@@ -13,7 +14,7 @@ interface TabsProps {
 }
 export default function Tabs({tabs}: TabsProps) {
   const layout = useWindowDimensions();
-  const theme = useTheme();
+  const theme = useAppTheme();
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState(tabs);
@@ -32,7 +33,7 @@ export default function Tabs({tabs}: TabsProps) {
       renderTabBar={props => (
         <TabBar
           {...props}
-          indicatorStyle={{backgroundColor: theme.colors.accent}}
+          indicatorStyle={{backgroundColor: theme.colors.secondary}}
           style={{backgroundColor: theme.colors.primary}}
         />
       )}

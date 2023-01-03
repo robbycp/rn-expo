@@ -1,8 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import i18n from '~/translations';
 
-import {ReduxModule} from '~/types/redux';
 import {RootState} from '../rootReducers';
+
+import i18n from '~/translations';
+import {ReduxModule} from '~/types/redux';
 
 export interface SnackbarState {
   action: {
@@ -22,7 +23,7 @@ export interface SnackbarShowProps {
   duration?: number;
   action?: {
     type: string;
-    payload?: {};
+    payload?: object;
   };
 }
 

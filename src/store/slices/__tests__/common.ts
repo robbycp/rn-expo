@@ -1,9 +1,9 @@
 import type {AnyAction} from '@reduxjs/toolkit';
 
-import {CommonData} from '~/types/common';
-
 import reducer, * as ducksCommon from '../common';
 import type {CommonState} from '../common';
+
+import {CommonData} from '~/types/common';
 
 describe('Reducers :', () => {
   test('should return the initial state', () => {
@@ -16,10 +16,7 @@ describe('Reducers :', () => {
       isLoading: true,
     };
     expect(
-      reducer(
-        ducksCommon.initialState,
-        ducksCommon.commonFetch({key: CommonData.privacyPolicy}),
-      ),
+      reducer(ducksCommon.initialState, ducksCommon.commonFetch({key: CommonData.privacyPolicy})),
     ).toEqual(expectedState);
   });
   test('should handle start common fetch failed', () => {
@@ -31,9 +28,7 @@ describe('Reducers :', () => {
       ...ducksCommon.initialState,
       isLoading: false,
     };
-    expect(reducer(previousState, ducksCommon.commonFetchFailed())).toEqual(
-      expectedState,
-    );
+    expect(reducer(previousState, ducksCommon.commonFetchFailed())).toEqual(expectedState);
   });
   test('should handle start common fetch success', () => {
     const contentPrivacyPolicy = 'content privacy policy';

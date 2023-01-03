@@ -1,8 +1,9 @@
 import React from 'react';
 import {FlatList, Image, StyleSheet, View} from 'react-native';
-import {Text, useTheme} from 'react-native-paper';
+import {Text} from 'react-native-paper';
 
-import i18n from '~/translations'
+import {useAppTheme} from '~/style/theme';
+import i18n from '~/translations';
 // Uncomment to use withPerformanceMonitor
 // import withPerformanceMonitor from 'react-native-performance-monitor/provider';
 
@@ -16,7 +17,7 @@ const styles = StyleSheet.create({
 const data = Array.from(Array(100).keys());
 
 const ScreenFlatListImageView = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <FlatList
       data={data}
@@ -26,9 +27,7 @@ const ScreenFlatListImageView = () => {
           key={item}
           style={[styles.image]}
           source={{
-            uri: `https://source.unsplash.com/random/500x${Math.floor(
-              Math.random() * 800 + 500,
-            )}`,
+            uri: `https://source.unsplash.com/random/500x${Math.floor(Math.random() * 800 + 500)}`,
           }}
         />
       )}

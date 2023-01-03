@@ -31,11 +31,7 @@ export const appSlice = createSlice({
   },
 });
 
-export const {
-  appNavigationReady,
-  appStartCheck,
-  appStartCheckFailed,
-  appStartCheckSuccess,
-} = appSlice.actions;
+export const {appNavigationReady, appStartCheck, appStartCheckFailed, appStartCheckSuccess} =
+  appSlice.actions;
 
 export default appSlice.reducer;

@@ -1,7 +1,7 @@
+import dayjs from 'dayjs';
 import React from 'react';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import dayjs from 'dayjs'
 import {View} from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import TextInput, {TextInputCustomProps} from './TextInput';
 
@@ -18,12 +18,7 @@ const format = {
   datetime: 'ddd DD-MMM-YYYY HH:mm',
 };
 
-const DatetimePicker = ({
-  textInputProps,
-  mode = 'date',
-  onChange,
-  value,
-}: DateTimePickerProps) => {
+const DatetimePicker = ({textInputProps, mode = 'date', onChange, value}: DateTimePickerProps) => {
   const [isShowModal, setisShowModal] = React.useState(false);
   const handleShowModal = () => {
     setisShowModal(true);

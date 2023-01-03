@@ -1,1 +1,1 @@
-export { default } from './VersionAppView'
+export {default} from './VersionAppView';

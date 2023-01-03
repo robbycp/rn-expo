@@ -1,7 +1,7 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Appbar} from 'react-native-paper';
-import {useNavigation} from '@react-navigation/native';
 
 interface HeaderProps {
   customRightIcon?: React.ReactElement;

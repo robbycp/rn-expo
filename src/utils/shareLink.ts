@@ -1,5 +1,5 @@
-import { Share } from 'react-native';
-import type { ShareContent } from 'react-native';
+import {Share} from 'react-native';
+import type {ShareContent} from 'react-native';
 
 function shareLink(content: ShareContent) {
   Share.share(content)

@@ -1,12 +1,9 @@
 import React from 'react';
 import {Animated, View, TextInput, StyleSheet} from 'react-native';
-import {useTheme} from 'react-native-paper';
-import {
-  CollapsibleSubHeaderAnimator,
-  useCollapsibleSubHeader,
-} from 'react-navigation-collapsible';
+import {CollapsibleSubHeaderAnimator, useCollapsibleSubHeader} from 'react-navigation-collapsible';
 
 import CollapsibleItem from '~/components/custom/CollapsibleItem';
+import {useAppTheme} from '~/style/theme';
 
 const data = [...Array(50).keys()];
 
@@ -25,7 +22,7 @@ const styles = StyleSheet.create({
 });
 
 const MySearchBar = () => {
-  const theme = useTheme();
+  const theme = useAppTheme();
   return (
     <View
       style={[

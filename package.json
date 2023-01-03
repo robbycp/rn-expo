@@ -2,15 +2,19 @@
   "name": "rn-expo-template",
   "version": "0.1.0",
   "scripts": {
+    "lint": "eslint --cache \"src/**/*.{js,jsx,ts,tsx}\"",
     "start": "expo start --dev-client",
     "eas-build-pre-install": "sh ./scripts/eas-build-pre-install.sh",
     "build:android:dev": "eas build --profile dev --platform android",
     "build:android:staging": "eas build --profile staging --platform android",
     "build:android:pre-production": "eas build --profile pre-production --platform android",
     "build:android:production": "eas build --profile production --platform android",
+    "update:staging": "eas update --branch staging --message $1",
+    "update:production": "eas update --branch production --message $1",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
+    "tsc": "tsc --noEmit",
     "test": "jest --watchAll"
   },
   "jest": {
@@ -75,7 +79,7 @@
     "react-native-modal-datetime-picker": "^14.0.0",
     "react-native-onesignal": "^4.4.1",
     "react-native-pager-view": "6.0.1",
-    "react-native-paper": "^4.12.5",
+    "react-native-paper": "~5.1.0",
     "react-native-reanimated": "~2.12.0",
     "react-native-render-html": "^6.3.4",
     "react-native-safe-area-context": "4.4.1",
@@ -94,12 +98,25 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@expo/config-types": "^47.0.0",
+    "@react-native-community/eslint-config": "^3.2.0",
+    "@types/jest": "^29.2.5",
+    "@types/mocha": "^10.0.1",
     "@types/react": "~18.0.24",
     "@types/react-native": "~0.70.6",
+    "@typescript-eslint/eslint-plugin": "^5.47.1",
+    "@typescript-eslint/parser": "^5.47.1",
+    "eslint": "^8.30.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-universe": "^11.1.1",
     "jest": "^26.6.3",
     "jest-expo": "~47.0.1",
+    "prettier": "^2.8.1",
     "react-test-renderer": "18.1.0",
+    "redux-saga-test-plan": "^4.0.6",
     "typescript": "^4.6.3"
   },
-  "private": true
+  "private": true,
+  "eslintConfig": {
+    "extends": "universe/native"
+  }
 }

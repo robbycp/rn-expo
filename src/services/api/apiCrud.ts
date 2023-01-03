@@ -1,5 +1,5 @@
-import {createAxios, createExportedEndpoint} from '~/utils/api';
 import type {Endpoint} from '~/types/api';
+import {createAxios, createExportedEndpoint} from '~/utils/api';
 
 export interface Todo {
   _id: string;
@@ -15,7 +15,7 @@ const apiCrudBase = createAxios({
 });
 
 export interface AxioCrud {
-  todosGet: Endpoint<{}, Todo[]>;
+  todosGet: Endpoint<object, Todo[]>;
   todosPost: Endpoint<Omit<Todo, '_id'>, Todo>;
   todosPut: Endpoint<Omit<Todo, '_id'>, Todo>;
   todosDelete: Endpoint<Todo, Todo>;

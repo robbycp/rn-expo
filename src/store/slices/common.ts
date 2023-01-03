@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {CommonData, CommonKey} from '~/types/common';
 
+import {CommonData, CommonKey} from '~/types/common';
 import {ReduxModule} from '~/types/redux';
 
 export interface CommonState {
@@ -19,7 +19,6 @@ export const commonSlice = createSlice({
   name: ReduxModule.COMMON,
   initialState,
   reducers: {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     commonFetch: (state, action: PayloadAction<{key: CommonKey}>) => {
       state.isLoading = true;
     },
